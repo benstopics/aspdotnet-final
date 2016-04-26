@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e2a20226d77b4312b60b0cd1388dafe1" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="SimGroceryModel.tConfig" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tContainer" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tCoupon" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tCouponDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tCouponSource" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tDiscountType" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tEmpl" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tEmplHistory" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tEmplStatu" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tEmplTitle" Width="1.5" PointX="5.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tLoyalty" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tManufacturer" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tNumber" Width="1.5" PointX="11.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tProduct" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tServing_size_UOM" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tStore" Width="1.5" PointX="5.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tStoreHistory" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tStoreStatu" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tSupplyChain" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tTransaction" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tTransactionDetail" Width="1.5" PointX="10" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tTransactionType" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tUOM" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tBrand" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.tName" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vAllTransactionsOfTopSpendingLoyaltyNumber" Width="1.5" PointX="5.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vAvery" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vCountOfTransactionsByStoreAndLoyalty" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vCoupon" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vCouponDetailsCurrentlyOpen" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vCouponInfo" Width="2" PointX="16.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vCouponsCurrentlyOpen" Width="1.5" PointX="9.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vCurrentStoreStatusForAllStore" Width="1.5" PointX="11.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vCurrentStoreStatusForAllStores_Step1" Width="1.5" PointX="13.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vEmpl" Width="1.5" PointX="15.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vEmplCountWhoAreCurrentlyEmployedByStore" Width="1.5" PointX="17.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vEmplDDL" Width="1.5" PointX="5.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vEmplGridViewReadOnly" Width="1.5" PointX="17.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vEmplMostCurrentStatusDateChange" Width="1.5" PointX="17.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vEmployeeWhoCanBeAStoreManager" Width="1.5" PointX="17.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vHourlySalesByCalendarDay" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vHourlySalesByCalendarDayGroupedByStore" Width="1.5" PointX="17.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vLoyaltyIDThatHasBroughtTheMostGrocery" Width="1.5" PointX="19.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice" Width="1.5" PointX="19.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vNumberOfEachTransactionType" Width="1.5" PointX="7.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vProductDDL" Width="1.5" PointX="19.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vProductInfo" Width="1.5" PointX="19.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vProductSalesByHours_NonPrime" Width="1.5" PointX="19.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vProductSalesByHours_Prime" Width="1.5" PointX="19.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vPurchasesAtStore" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vPurchaseTotal" Width="1.5" PointX="9.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vStoreStatusTable" Width="1.5" PointX="11.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vStoreStatusThatIsClosedButNotClosedForever" Width="1.5" PointX="13.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vTop10ProductsByQtyOfProduct" Width="1.5" PointX="21.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vTop15MostLoyalCustomers" Width="1.5" PointX="21.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vTop5CustomersReceivingRefunds" Width="1.5" PointX="21.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vTopSellingProductByTotalAmount" Width="1.5" PointX="21.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vTopSpendingLoyaltyNumber" Width="1.5" PointX="21.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vTotalAmountByTransactionType" Width="1.5" PointX="15.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SimGroceryModel.vTotalSalesByProduct" Width="1.5" PointX="21.75" PointY="18.75" IsExpanded="true" />
+        <AssociationConnector Association="SimGroceryModel.FK_tCoupon_tCouponSource" ManuallyRouted="false" />
+        <AssociationConnector Association="SimGroceryModel.FK_tCouponDetail_tCoupon" ManuallyRouted="false" />
+        <AssociationConnector Association="SimGroceryModel.FK_tCouponDetail_tDiscountType" ManuallyRouted="false" />
+        <AssociationConnector Association="SimGroceryModel.FK_tCouponDetail_tProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="SimGroceryModel.FK_tEmpl_tEmplTitle" ManuallyRouted="false" />
+        <AssociationConnector Association="SimGroceryModel.FK_tEmpl_tStore" ManuallyRouted="false" />
+        <AssociationConnector Association="SimGroceryModel.TransactionID_fk1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

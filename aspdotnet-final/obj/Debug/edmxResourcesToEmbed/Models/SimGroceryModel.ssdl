@@ -1,0 +1,1520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SimGroceryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.tBrand' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tBrand">
+    <Key>
+      <PropertyRef Name="Brand" />
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="int" Nullable="false" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tConfig">
+    <Key>
+      <PropertyRef Name="ConfigID" />
+    </Key>
+    <Property Name="ConfigID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaxStores" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tContainer">
+    <Key>
+      <PropertyRef Name="ContainerID" />
+    </Key>
+    <Property Name="ContainerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Container" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tCoupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Coupon" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="CouponSourceID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="ThroughDate" Type="date" />
+  </EntityType>
+  <EntityType Name="tCouponDetail">
+    <Key>
+      <PropertyRef Name="CouponDetailID" />
+    </Key>
+    <Property Name="CouponDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CouponID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="DiscountTypeID" Type="int" Nullable="false" />
+    <Property Name="PercentageDiscount" Type="int" />
+    <Property Name="AmountOff" Type="money" />
+  </EntityType>
+  <EntityType Name="tCouponSource">
+    <Key>
+      <PropertyRef Name="CouponSourceID" />
+    </Key>
+    <Property Name="CouponSourceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CouponSource" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tDiscountType">
+    <Key>
+      <PropertyRef Name="DiscountTypeID" />
+    </Key>
+    <Property Name="DiscountTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DiscountType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsFree" Type="bit" Nullable="false" />
+    <Property Name="IsPercentageDiscount" Type="bit" Nullable="false" />
+    <Property Name="IsBOGO" Type="bit" Nullable="false" />
+    <Property Name="isAmountOff" Type="bigint" />
+  </EntityType>
+  <EntityType Name="tEmpl">
+    <Key>
+      <PropertyRef Name="EmplID" />
+    </Key>
+    <Property Name="EmplID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Empl" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="StoreID" Type="int" />
+    <Property Name="EmplTitleID" Type="int" />
+    <Property Name="IsSelfScan" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tEmplHistory">
+    <Key>
+      <PropertyRef Name="EmplHistoryID" />
+    </Key>
+    <Property Name="EmplHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EmplStatusID" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="DateStamp" Type="datetime" Nullable="false" />
+    <Property Name="EmplID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tEmplStatus">
+    <Key>
+      <PropertyRef Name="EmplStatusID" />
+    </Key>
+    <Property Name="EmplStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmplStatus" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CanWork" Type="bit" Nullable="false" />
+    <Property Name="IsEmployed" Type="bit" />
+  </EntityType>
+  <EntityType Name="tEmplTitle">
+    <Key>
+      <PropertyRef Name="EmplTitleID" />
+    </Key>
+    <Property Name="EmplTitleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmplTitle" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="IsStoreManager" Type="bit" Nullable="false" />
+    <Property Name="IsSelfScan" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tLoyalty">
+    <Key>
+      <PropertyRef Name="LoyaltyID" />
+    </Key>
+    <Property Name="LoyaltyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoyaltyNumber" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="DateOfIssue" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tManufacturer">
+    <Key>
+      <PropertyRef Name="ManufacturerID" />
+    </Key>
+    <Property Name="ManufacturerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="nchar" MaxLength="10" />
+    <Property Name="IsSupplier" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.tName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tName">
+    <Key>
+      <PropertyRef Name="NameID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="NameID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tNumber">
+    <Key>
+      <PropertyRef Name="NumberID" />
+    </Key>
+    <Property Name="NumberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" />
+    <Property Name="IsPrime" Type="bit" />
+  </EntityType>
+  <EntityType Name="tProduct">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="255" />
+    <Property Name="UPC-E" Type="nvarchar" MaxLength="255" />
+    <Property Name="UPC-A " Type="nchar" MaxLength="12" />
+    <Property Name="ManufacturerID" Type="int" />
+    <Property Name="BrandID" Type="int" />
+    <Property Name="PricePerSellableUnit" Type="money" />
+    <Property Name="NameID" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="ContainerID" Type="int" />
+    <Property Name="Size" Type="float" />
+    <Property Name="Size_UOMID" Type="int" />
+    <Property Name="I_Size" Type="float" />
+    <Property Name="I_UOMID" Type="int" />
+    <Property Name="Parent" Type="nvarchar" MaxLength="255" />
+    <Property Name="Count" Type="nvarchar" MaxLength="255" />
+    <Property Name="Endorsement(s)" Type="nvarchar" MaxLength="255" />
+    <Property Name="Country" Type="nvarchar" MaxLength="255" />
+    <Property Name="Prepared / Notes - Health Claims" Type="nvarchar" MaxLength="255" />
+    <Property Name="Serving_Size" Type="float" />
+    <Property Name="Serving_Size_UOMID" Type="int" />
+    <Property Name="I_Serving_Size" Type="float" />
+    <Property Name="I-Serving_Size_UOM" Type="nvarchar" MaxLength="255" />
+    <Property Name="I-Serving_Size_UOMID" Type="int" />
+    <Property Name="Pieces" Type="nvarchar" MaxLength="255" />
+    <Property Name="Servings_Per_Container" Type="float" />
+    <Property Name="Calories" Type="float" />
+    <Property Name="Fat_Calories" Type="nvarchar" MaxLength="255" />
+    <Property Name="Total_Fat_G" Type="float" />
+    <Property Name="Dvp_Total_Fat" Type="float" />
+    <Property Name="Saturated_Fat_G" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Saturated_Fat" Type="nvarchar" MaxLength="255" />
+    <Property Name="Trans_Fat_G" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Trans_Fat" Type="nvarchar" MaxLength="255" />
+    <Property Name="Polyunsaturated_Fat_G" Type="nvarchar" MaxLength="255" />
+    <Property Name="Monounsaturated Fat_G" Type="nvarchar" MaxLength="255" />
+    <Property Name="Cholesterol_MG" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Cholesterol" Type="nvarchar" MaxLength="255" />
+    <Property Name="Sodium_MG" Type="float" />
+    <Property Name="Dvp_Sodium" Type="float" />
+    <Property Name="Potassium_MG" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Potassium" Type="nvarchar" MaxLength="255" />
+    <Property Name="Carbohydrates_G" Type="float" />
+    <Property Name="Dvp_Carbohydrates" Type="float" />
+    <Property Name="Fiber_G" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Dietary_Fiber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Sugars_G" Type="float" />
+    <Property Name="Dvp_Sugar" Type="nvarchar" MaxLength="255" />
+    <Property Name="Other_Carbohydrates_G" Type="nvarchar" MaxLength="255" />
+    <Property Name="Sugar Alcohols_G" Type="nvarchar" MaxLength="255" />
+    <Property Name="Protein_G" Type="float" />
+    <Property Name="Dvp_Protein" Type="nvarchar" MaxLength="255" />
+    <Property Name="Net_Carbs_G" Type="float" />
+    <Property Name="Ingredients" Type="nvarchar(max)" />
+    <Property Name="Warnings" Type="nvarchar" MaxLength="255" />
+    <Property Name="Allergy Information" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Vitamin_A" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Vitamin_C" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Calcium" Type="float" />
+    <Property Name="Dvp_Iron" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Vitamin_D" Type="float" />
+    <Property Name="Dvp_Vitamin_E" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Vitamin_K" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Thiamin" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Riboflavin" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Niacin" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Vitamin_B1" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Vitamin_B2" Type="float" />
+    <Property Name="Dvp_Vitamin_B6" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Folic_Acid" Type="float" />
+    <Property Name="Dvp_Vitamin_B12" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Biotin" Type="nvarchar" MaxLength="255" />
+    <Property Name="DVP_Pantothenic_Acid" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Phosphorus" Type="float" />
+    <Property Name="Dvp_Iodine" Type="float" />
+    <Property Name="Dvp_Magnesium" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Zinc" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Selenium" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Copper" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Manganese" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Chromium" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Molybdenum" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Vitamin_B3" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Vitamin_B5" Type="nvarchar" MaxLength="255" />
+    <Property Name="Dvp_Folate" Type="nvarchar" MaxLength="255" />
+    <Property Name="Soluble Fiber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Insoluble Fiber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Phosphate" Type="nvarchar" MaxLength="255" />
+    <Property Name="Chloride" Type="nvarchar" MaxLength="255" />
+    <Property Name="Caffeine_Mg" Type="float" />
+    <Property Name="Silica" Type="nvarchar" MaxLength="255" />
+    <Property Name="pH" Type="nvarchar" MaxLength="255" />
+    <Property Name="Bicarbonates" Type="nvarchar" MaxLength="255" />
+    <Property Name="Total Dissolved Solids" Type="nvarchar" MaxLength="255" />
+    <Property Name="Omega 3" Type="nvarchar" MaxLength="255" />
+    <Property Name="Oleic Acid" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tServing_size_UOM">
+    <Key>
+      <PropertyRef Name="Serving_size_UOMID" />
+    </Key>
+    <Property Name="Serving_size_UOMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Serving_size_UOM" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tStore">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="Address1" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="Address2" Type="nchar" MaxLength="200" />
+    <Property Name="City" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="State" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Zip" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="ManagerID" Type="int" Nullable="false" />
+    <Property Name="StoreNumber" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tStoreHistory">
+    <Key>
+      <PropertyRef Name="StoreHistoryID" />
+    </Key>
+    <Property Name="StoreHistoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="StoreStatusID" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="DateStamp" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tStoreStatus">
+    <Key>
+      <PropertyRef Name="StoreStatusID" />
+    </Key>
+    <Property Name="StoreStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreStatus" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsOpenForBusiness" Type="bit" Nullable="false" />
+    <Property Name="IsClosedForever" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tSupplyChain">
+    <Key>
+      <PropertyRef Name="SupplyChainID" />
+    </Key>
+    <Property Name="SupplyChainID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ManufacturerID" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tTransaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeOfTransaction" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DateOfTransaction" Type="date" Nullable="false" />
+    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="LoyaltyID" Type="int" Nullable="false" />
+    <Property Name="TransactionTypeID" Type="int" Nullable="false" />
+    <Property Name="EmplID" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="DateEntered" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="tTransactionDetail">
+    <Key>
+      <PropertyRef Name="TransactionDetailID" />
+    </Key>
+    <Property Name="TransactionDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionID" Type="int" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="QtyOfProduct" Type="int" />
+    <Property Name="PricePerSellableUnit" Type="money" />
+    <Property Name="TotalPrice" Type="money" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="CouponDetailID" Type="int" />
+  </EntityType>
+  <EntityType Name="tTransactionType">
+    <Key>
+      <PropertyRef Name="TransactionTypeID" />
+    </Key>
+    <Property Name="TransactionTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tUOM">
+    <Key>
+      <PropertyRef Name="UOMID" />
+    </Key>
+    <Property Name="UOMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UOM" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vAllTransactionsOfTopSpendingLoyaltyNumber' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vAllTransactionsOfTopSpendingLoyaltyNumber">
+    <Key>
+      <PropertyRef Name="LoyaltyNumber" />
+    </Key>
+    <Property Name="LoyaltyNumber" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Expr1" Type="money" />
+    <Property Name="Expr2" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vAvery' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vAvery">
+    <Key>
+      <PropertyRef Name="Store" />
+      <PropertyRef Name="StoreNumber" />
+      <PropertyRef Name="TimeOfTransaction" />
+      <PropertyRef Name="DateOfTransaction" />
+    </Key>
+    <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="StoreNumber" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="TimeOfTransaction" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DateOfTransaction" Type="date" Nullable="false" />
+    <Property Name="SumOfTotalPrice" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vCountOfTransactionsByStoreAndLoyalty' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCountOfTransactionsByStoreAndLoyalty">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="Store" />
+    </Key>
+    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="LoyaltyNumber" Type="nchar" MaxLength="10" />
+    <Property Name="CountOfTransactions" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vCoupon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCoupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+      <PropertyRef Name="Coupon" />
+      <PropertyRef Name="CouponSourceID" />
+    </Key>
+    <Property Name="CouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Coupon" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="CouponSourceID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="ThroughDate" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vCouponDetailsCurrentlyOpen' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCouponDetailsCurrentlyOpen">
+    <Key>
+      <PropertyRef Name="CouponDetailID" />
+      <PropertyRef Name="CouponID" />
+      <PropertyRef Name="DiscountTypeID" />
+    </Key>
+    <Property Name="CouponDetailID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="CouponID" Type="int" Nullable="false" />
+    <Property Name="DiscountTypeID" Type="int" Nullable="false" />
+    <Property Name="AmountOff" Type="money" />
+    <Property Name="PercentageDiscount" Type="int" />
+    <Property Name="DiscountType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsFree" Type="bit" />
+    <Property Name="IsBOGO" Type="bit" />
+    <Property Name="IsPercentageDiscount" Type="bit" />
+    <Property Name="isAmountOff" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vCouponInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCouponInfo">
+    <Key>
+      <PropertyRef Name="Coupon" />
+      <PropertyRef Name="CouponSource" />
+      <PropertyRef Name="DiscountType" />
+      <PropertyRef Name="IsFree" />
+      <PropertyRef Name="IsPercentageDiscount" />
+      <PropertyRef Name="IsBOGO" />
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="Coupon" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="CouponSource" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="ThroughDate" Type="date" />
+    <Property Name="ProductDescription" Type="nvarchar" MaxLength="255" />
+    <Property Name="AmountOff" Type="money" />
+    <Property Name="PercentageDiscount" Type="int" />
+    <Property Name="DiscountType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsFree" Type="bit" Nullable="false" />
+    <Property Name="IsPercentageDiscount" Type="bit" Nullable="false" />
+    <Property Name="IsBOGO" Type="bit" Nullable="false" />
+    <Property Name="isAmountOff" Type="bigint" />
+    <Property Name="CouponID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vCouponsCurrentlyOpen' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCouponsCurrentlyOpen">
+    <Key>
+      <PropertyRef Name="CouponID" />
+      <PropertyRef Name="Coupon" />
+      <PropertyRef Name="CouponSourceID" />
+    </Key>
+    <Property Name="CouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Coupon" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="CouponSourceID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="ThroughDate" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vCurrentStoreStatusForAllStores' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCurrentStoreStatusForAllStores">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="StoreStatus" />
+      <PropertyRef Name="IsOpenForBusiness" />
+      <PropertyRef Name="IsClosedForever" />
+      <PropertyRef Name="StoreStatusID" />
+    </Key>
+    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="DateOfLastStatusChange" Type="datetime" />
+    <Property Name="StoreStatus" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsOpenForBusiness" Type="bit" Nullable="false" />
+    <Property Name="IsClosedForever" Type="bit" Nullable="false" />
+    <Property Name="StoreStatusID" Type="int" Nullable="false" />
+    <Property Name="myStore" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vCurrentStoreStatusForAllStores_Step1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCurrentStoreStatusForAllStores_Step1">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="DateOfLastStatusChange" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vEmpl' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vEmpl">
+    <Key>
+      <PropertyRef Name="EmplID" />
+      <PropertyRef Name="Empl" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="IsSelfScan" />
+    </Key>
+    <Property Name="EmplID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Empl" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="StoreID" Type="int" />
+    <Property Name="EmplTitleID" Type="int" />
+    <Property Name="IsSelfScan" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vEmplCountWhoAreCurrentlyEmployedByStore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vEmplCountWhoAreCurrentlyEmployedByStore">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="Store" />
+    </Key>
+    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="TotalEmployeesWhoAreEmployed" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vEmplDDL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vEmplDDL">
+    <Key>
+      <PropertyRef Name="Empl" />
+      <PropertyRef Name="EmplID" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="Store" />
+      <PropertyRef Name="Address1" />
+      <PropertyRef Name="EmplTitle" />
+    </Key>
+    <Property Name="Empl" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="EmplID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="Address1" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="EmplTitle" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Summary" Type="nvarchar" MaxLength="213" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vEmplGridViewReadOnly' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vEmplGridViewReadOnly">
+    <Key>
+      <PropertyRef Name="Empl" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="IsSelfScan" />
+      <PropertyRef Name="EmplTitle" />
+      <PropertyRef Name="Store" />
+      <PropertyRef Name="Address1" />
+    </Key>
+    <Property Name="Empl" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsSelfScan" Type="bit" Nullable="false" />
+    <Property Name="EmplTitle" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="Address1" Type="nchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vEmplMostCurrentStatusDateChange' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vEmplMostCurrentStatusDateChange">
+    <Key>
+      <PropertyRef Name="EmplID" />
+    </Key>
+    <Property Name="EmplID" Type="int" Nullable="false" />
+    <Property Name="MostCurrentStatusDateChange" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vEmployeeWhoCanBeAStoreManager' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vEmployeeWhoCanBeAStoreManager">
+    <Key>
+      <PropertyRef Name="EmplID" />
+      <PropertyRef Name="Empl" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+    </Key>
+    <Property Name="EmplID" Type="int" Nullable="false" />
+    <Property Name="Empl" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LastName" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="nchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vHourlySalesByCalendarDay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vHourlySalesByCalendarDay">
+    <Key>
+      <PropertyRef Name="DateOfTransaction" />
+    </Key>
+    <Property Name="TotalPrice" Type="money" />
+    <Property Name="DateOfTransaction" Type="date" Nullable="false" />
+    <Property Name="Hour" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vHourlySalesByCalendarDayGroupedByStore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vHourlySalesByCalendarDayGroupedByStore">
+    <Key>
+      <PropertyRef Name="DateOfTransaction" />
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="Store" />
+    </Key>
+    <Property Name="TotalPrice" Type="money" />
+    <Property Name="DateOfTransaction" Type="date" Nullable="false" />
+    <Property Name="Hour" Type="int" />
+    <Property Name="StoreID" Type="int" Nullable="false" />
+    <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SimGrocery.dbo.vLastTransactionInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vLastTransactionInfo">
+          <Property Name="Expr2" Type="nvarchar" MaxLength="248" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vLoyaltyIDThatHasBroughtTheMostGroceries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vLoyaltyIDThatHasBroughtTheMostGroceries">
+    <Key>
+      <PropertyRef Name="LoyaltyID" />
+    </Key>
+    <Property Name="LoyaltyID" Type="int" Nullable="false" />
+    <Property Name="SumOfTotalPrice" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SimGrocery.dbo.vMaxTransactionID' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vMaxTransactionID">
+          <Property Name="maxTransactionID" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice">
+    <Key>
+      <PropertyRef Name="LoyaltyNumber" />
+    </Key>
+    <Property Name="LoyaltyNumber" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="TotalPrice" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vNumberOfEachTransactionType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vNumberOfEachTransactionType">
+    <Key>
+      <PropertyRef Name="TransactionType" />
+    </Key>
+    <Property Name="TransactionType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Expr1" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vProductDDL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vProductDDL">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vProductInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vProductInfo">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Container" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Brand" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Container" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BrandID" Type="int" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Calories" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SimGrocery.dbo.vProductRpt' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vProductRpt">
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vProductSalesByHours_NonPrime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vProductSalesByHours_NonPrime">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Brand" />
+    </Key>
+    <Property Name="NameID" Type="int" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Qty" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vProductSalesByHours_Prime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vProductSalesByHours_Prime">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Brand" />
+    </Key>
+    <Property Name="NameID" Type="int" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Brand" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Qty" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vPurchasesAtStore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vPurchasesAtStore">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="Store" />
+      <PropertyRef Name="StoreNumber" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="TimeOfTransaction" />
+    </Key>
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="StoreNumber" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="State" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="SumOfTotalPrice" Type="money" />
+    <Property Name="TimeOfTransaction" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vPurchaseTotals' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vPurchaseTotals">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="TimeOfTransaction" />
+      <PropertyRef Name="DateOfTransaction" />
+    </Key>
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="TimeOfTransaction" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DateOfTransaction" Type="date" Nullable="false" />
+    <Property Name="SumOfTotalPrice" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SimGrocery.dbo.vSam' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vSam">
+          <Property Name="Products Sold" Type="int" />
+          <Property Name="Store Name" Type="nvarchar" MaxLength="200" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vStoreStatusTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vStoreStatusTable">
+    <Key>
+      <PropertyRef Name="StoreStatusID" />
+      <PropertyRef Name="StoreStatus" />
+      <PropertyRef Name="IsOpenForBusiness" />
+      <PropertyRef Name="IsClosedForever" />
+    </Key>
+    <Property Name="StoreStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreStatus" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsOpenForBusiness" Type="bit" Nullable="false" />
+    <Property Name="IsClosedForever" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vStoreStatusThatIsClosedButNotClosedForever' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vStoreStatusThatIsClosedButNotClosedForever">
+    <Key>
+      <PropertyRef Name="StoreStatusID" />
+      <PropertyRef Name="IsOpenForBusiness" />
+      <PropertyRef Name="IsClosedForever" />
+    </Key>
+    <Property Name="StoreStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsOpenForBusiness" Type="bit" Nullable="false" />
+    <Property Name="IsClosedForever" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vTop10ProductsByQtyOfProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vTop10ProductsByQtyOfProduct">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="TransactionTypeID" />
+    </Key>
+    <Property Name="ProductID" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SumOfQtyOfProduct" Type="int" />
+    <Property Name="TransactionTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vTop15MostLoyalCustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vTop15MostLoyalCustomers">
+    <Key>
+      <PropertyRef Name="LoyaltyID" />
+      <PropertyRef Name="LoyaltyNumber" />
+    </Key>
+    <Property Name="LoyaltyID" Type="int" Nullable="false" />
+    <Property Name="LoyaltyNumber" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="CountOfTransactionID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vTop5CustomersReceivingRefunds' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vTop5CustomersReceivingRefunds">
+    <Key>
+      <PropertyRef Name="LoyaltyNumber" />
+      <PropertyRef Name="TransactionTypeID" />
+    </Key>
+    <Property Name="LoyaltyNumber" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Expr1" Type="money" />
+    <Property Name="TransactionTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SimGrocery.dbo.vTopProductsByTotalSales' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vTopProductsByTotalSales">
+          <Property Name="SumOfTotalPrice" Type="money" />
+          <Property Name="Product" Type="nvarchar(max)" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vTopSellingProductByTotalAmount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vTopSellingProductByTotalAmount">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Expr1" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vTopSpendingLoyaltyNumber' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vTopSpendingLoyaltyNumber">
+    <Key>
+      <PropertyRef Name="LoyaltyNumber" />
+      <PropertyRef Name="LoyaltyID" />
+    </Key>
+    <Property Name="LoyaltyNumber" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="TotalPrice" Type="money" />
+    <Property Name="LoyaltyID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SimGrocery.dbo.vTopToProductsByTotalSales' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vTopToProductsByTotalSales">
+          <Property Name="SumOfTotalPrice" Type="money" />
+          <Property Name="Product" Type="nvarchar(max)" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vTotalAmountByTransactionType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vTotalAmountByTransactionType">
+    <Key>
+      <PropertyRef Name="TransactionType" />
+    </Key>
+    <Property Name="TransactionType" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Expr1" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SimGrocery.dbo.vTotalSalesByProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vTotalSalesByProduct">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ProductID" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SaleAmount" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vTotalTransactions">
+          <Property Name="TotalTransactions" Type="int" />
+        </EntityType>-->
+  <Association Name="FK_tCoupon_tCouponSource">
+    <End Role="tCouponSource" Type="Self.tCouponSource" Multiplicity="1" />
+    <End Role="tCoupon" Type="Self.tCoupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tCouponSource">
+        <PropertyRef Name="CouponSourceID" />
+      </Principal>
+      <Dependent Role="tCoupon">
+        <PropertyRef Name="CouponSourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tCouponDetail_tCoupon">
+    <End Role="tCoupon" Type="Self.tCoupon" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tCouponDetail" Type="Self.tCouponDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tCoupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="tCouponDetail">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tCouponDetail_tDiscountType">
+    <End Role="tDiscountType" Type="Self.tDiscountType" Multiplicity="1" />
+    <End Role="tCouponDetail" Type="Self.tCouponDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tDiscountType">
+        <PropertyRef Name="DiscountTypeID" />
+      </Principal>
+      <Dependent Role="tCouponDetail">
+        <PropertyRef Name="DiscountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tCouponDetail_tProduct">
+    <End Role="tProduct" Type="Self.tProduct" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tCouponDetail" Type="Self.tCouponDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tProduct">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="tCouponDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tEmpl_tEmplTitle">
+    <End Role="tEmplTitle" Type="Self.tEmplTitle" Multiplicity="0..1" />
+    <End Role="tEmpl" Type="Self.tEmpl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tEmplTitle">
+        <PropertyRef Name="EmplTitleID" />
+      </Principal>
+      <Dependent Role="tEmpl">
+        <PropertyRef Name="EmplTitleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tEmpl_tStore">
+    <End Role="tStore" Type="Self.tStore" Multiplicity="0..1" />
+    <End Role="tEmpl" Type="Self.tEmpl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tStore">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="tEmpl">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransactionID_fk1">
+    <End Role="tTransaction" Type="Self.tTransaction" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tTransactionDetail" Type="Self.tTransactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTransaction">
+        <PropertyRef Name="TransactionID" />
+      </Principal>
+      <Dependent Role="tTransactionDetail">
+        <PropertyRef Name="TransactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fEmployeesWhoCanBeAStoreManager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="EmplID" Type="int" Nullable="false" />
+          <Property Name="Empl" Type="nchar" MaxLength="10" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fGetCouponDetailsCurrentlyOpenByProductID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="productID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="couponDetailID" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fGetCouponInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="couponID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Coupon" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="CouponSource" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="ThroughDate" Type="date" />
+          <Property Name="Expr1" Type="nvarchar" MaxLength="255" />
+          <Property Name="AmountOff" Type="money" />
+          <Property Name="PercentageDiscount" Type="int" />
+          <Property Name="DiscountType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsFree" Type="bit" Nullable="false" />
+          <Property Name="IsPercentageDiscount" Type="bit" Nullable="false" />
+          <Property Name="IsBOGO" Type="bit" Nullable="false" />
+          <Property Name="isAmountOff" Type="bigint" />
+          <Property Name="CouponID" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fGetCouponsOpen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="couponDate" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="CouponID" Type="int" Nullable="false" />
+          <Property Name="Coupon" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="CouponSourceID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="ThroughDate" Type="date" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fGetCurrentEmplStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmplID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="EmplID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EmplStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CanWork" Type="bit" Nullable="false" />
+          <Property Name="IsEmployed" Type="bit" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fGetCurrentStoreStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StoreID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="StoreID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="StoreStatus" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsopenForBusiness" Type="bit" Nullable="false" />
+          <Property Name="IsClosedForever" Type="bit" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fGetEmplStatus_CanWork" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="EmplStatusID" Type="int" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fGetStoreInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Store" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="StoreID" Type="int" Nullable="false" />
+          <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+          <Property Name="Address1" Type="nchar" MaxLength="200" Nullable="false" />
+          <Property Name="Address2" Type="nchar" MaxLength="200" />
+          <Property Name="City" Type="nchar" MaxLength="200" Nullable="false" />
+          <Property Name="State" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Zip" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="ManagerID" Type="int" Nullable="false" />
+          <Property Name="StoreNumber" Type="nchar" MaxLength="10" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fTotalSalesByProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProductID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SaleAmount" Type="money" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="spAddEmpl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstName" Type="nchar" Mode="In" />
+    <Parameter Name="LastName" Type="nchar" Mode="In" />
+    <Parameter Name="Empl" Type="nchar" Mode="In" />
+    <Parameter Name="StoreID" Type="int" Mode="In" />
+    <Parameter Name="EmplTitleID" Type="int" Mode="In" />
+    <Parameter Name="EmplStatusID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spAddStore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StoreNumber" Type="nchar" Mode="In" />
+    <Parameter Name="Store" Type="nchar" Mode="In" />
+    <Parameter Name="Address1" Type="nchar" Mode="In" />
+    <Parameter Name="Address2" Type="nchar" Mode="In" />
+    <Parameter Name="City" Type="nchar" Mode="In" />
+    <Parameter Name="State" Type="nchar" Mode="In" />
+    <Parameter Name="Zip" Type="nchar" Mode="In" />
+    <Parameter Name="ManagerID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spAddStoreWithStoreStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StoreNumber" Type="nchar" Mode="In" />
+    <Parameter Name="Store" Type="nchar" Mode="In" />
+    <Parameter Name="Address1" Type="nchar" Mode="In" />
+    <Parameter Name="Address2" Type="nchar" Mode="In" />
+    <Parameter Name="City" Type="nchar" Mode="In" />
+    <Parameter Name="State" Type="nchar" Mode="In" />
+    <Parameter Name="Zip" Type="nchar" Mode="In" />
+    <Parameter Name="ManagerID" Type="int" Mode="In" />
+    <Parameter Name="StoreStatusID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spAddTransactionAndDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LoyaltyID" Type="int" Mode="In" />
+    <Parameter Name="DateOfTransaction" Type="varchar" Mode="In" />
+    <Parameter Name="TimeOfTransaction" Type="varchar" Mode="In" />
+    <Parameter Name="TransactionTypeID" Type="int" Mode="In" />
+    <Parameter Name="StoreID" Type="int" Mode="In" />
+    <Parameter Name="EmplID" Type="int" Mode="In" />
+    <Parameter Name="ProductID" Type="int" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="PricePerSellableUnit" Type="varchar" Mode="In" />
+    <Parameter Name="TotalPrice" Type="varchar" Mode="In" />
+    <Parameter Name="TransactionComment" Type="varchar" Mode="In" />
+    <Parameter Name="TransactionDetailComment" Type="varchar" Mode="In" />
+    <Parameter Name="couponDetailID" Type="int" Mode="In" />
+    <Parameter Name="TransactionID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="spAddTransactionDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TransactionID" Type="int" Mode="In" />
+    <Parameter Name="ProductID" Type="int" Mode="In" />
+    <Parameter Name="Qty" Type="int" Mode="In" />
+    <Parameter Name="PricePerSellableUnit" Type="varchar" Mode="In" />
+    <Parameter Name="TotalPrice" Type="varchar" Mode="In" />
+    <Parameter Name="TransactionDetailComment" Type="varchar" Mode="In" />
+    <Parameter Name="couponDetailID" Type="int" Mode="In" />
+    <Parameter Name="TransactionDetailID" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="spInitEmplHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spInitStoreHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spUpdateEmplStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmplID" Type="int" Mode="In" />
+    <Parameter Name="EmplStatusID" Type="int" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="spUpdateStoreStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StoreID" Type="int" Mode="In" />
+    <Parameter Name="StoreStatusID" Type="int" Mode="In" />
+    <Parameter Name="StartDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="zzzSQLInjection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Store" Type="char" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="SimGroceryModelStoreContainer">
+    <EntitySet Name="tConfig" EntityType="Self.tConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tContainer" EntityType="Self.tContainer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tCoupon" EntityType="Self.tCoupon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tCouponDetail" EntityType="Self.tCouponDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tCouponSource" EntityType="Self.tCouponSource" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tDiscountType" EntityType="Self.tDiscountType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tEmpl" EntityType="Self.tEmpl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tEmplHistory" EntityType="Self.tEmplHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tEmplStatus" EntityType="Self.tEmplStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tEmplTitle" EntityType="Self.tEmplTitle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tLoyalty" EntityType="Self.tLoyalty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tManufacturer" EntityType="Self.tManufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tNumber" EntityType="Self.tNumber" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tProduct" EntityType="Self.tProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tServing_size_UOM" EntityType="Self.tServing_size_UOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tStore" EntityType="Self.tStore" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tStoreHistory" EntityType="Self.tStoreHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tStoreStatus" EntityType="Self.tStoreStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tSupplyChain" EntityType="Self.tSupplyChain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tTransaction" EntityType="Self.tTransaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tTransactionDetail" EntityType="Self.tTransactionDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tTransactionType" EntityType="Self.tTransactionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tUOM" EntityType="Self.tUOM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tBrand" EntityType="Self.tBrand" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tBrand].[BrandID] AS [BrandID], 
+    [tBrand].[Brand] AS [Brand]
+    FROM [dbo].[tBrand] AS [tBrand]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tName" EntityType="Self.tName" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tName].[NameID] AS [NameID], 
+    [tName].[Name] AS [Name]
+    FROM [dbo].[tName] AS [tName]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vAllTransactionsOfTopSpendingLoyaltyNumber" EntityType="Self.vAllTransactionsOfTopSpendingLoyaltyNumber" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vAllTransactionsOfTopSpendingLoyaltyNumber].[LoyaltyNumber] AS [LoyaltyNumber], 
+    [vAllTransactionsOfTopSpendingLoyaltyNumber].[Expr1] AS [Expr1], 
+    [vAllTransactionsOfTopSpendingLoyaltyNumber].[Expr2] AS [Expr2]
+    FROM [dbo].[vAllTransactionsOfTopSpendingLoyaltyNumber] AS [vAllTransactionsOfTopSpendingLoyaltyNumber]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vAvery" EntityType="Self.vAvery" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vAvery].[Store] AS [Store], 
+    [vAvery].[StoreNumber] AS [StoreNumber], 
+    [vAvery].[TimeOfTransaction] AS [TimeOfTransaction], 
+    [vAvery].[DateOfTransaction] AS [DateOfTransaction], 
+    [vAvery].[SumOfTotalPrice] AS [SumOfTotalPrice]
+    FROM [dbo].[vAvery] AS [vAvery]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCountOfTransactionsByStoreAndLoyalty" EntityType="Self.vCountOfTransactionsByStoreAndLoyalty" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCountOfTransactionsByStoreAndLoyalty].[StoreID] AS [StoreID], 
+    [vCountOfTransactionsByStoreAndLoyalty].[Store] AS [Store], 
+    [vCountOfTransactionsByStoreAndLoyalty].[LoyaltyNumber] AS [LoyaltyNumber], 
+    [vCountOfTransactionsByStoreAndLoyalty].[CountOfTransactions] AS [CountOfTransactions]
+    FROM [dbo].[vCountOfTransactionsByStoreAndLoyalty] AS [vCountOfTransactionsByStoreAndLoyalty]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCoupon" EntityType="Self.vCoupon" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCoupon].[CouponID] AS [CouponID], 
+    [vCoupon].[Coupon] AS [Coupon], 
+    [vCoupon].[Description] AS [Description], 
+    [vCoupon].[CouponSourceID] AS [CouponSourceID], 
+    [vCoupon].[StartDate] AS [StartDate], 
+    [vCoupon].[ThroughDate] AS [ThroughDate]
+    FROM [dbo].[vCoupon] AS [vCoupon]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCouponDetailsCurrentlyOpen" EntityType="Self.vCouponDetailsCurrentlyOpen" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCouponDetailsCurrentlyOpen].[CouponDetailID] AS [CouponDetailID], 
+    [vCouponDetailsCurrentlyOpen].[ProductID] AS [ProductID], 
+    [vCouponDetailsCurrentlyOpen].[CouponID] AS [CouponID], 
+    [vCouponDetailsCurrentlyOpen].[DiscountTypeID] AS [DiscountTypeID], 
+    [vCouponDetailsCurrentlyOpen].[AmountOff] AS [AmountOff], 
+    [vCouponDetailsCurrentlyOpen].[PercentageDiscount] AS [PercentageDiscount], 
+    [vCouponDetailsCurrentlyOpen].[DiscountType] AS [DiscountType], 
+    [vCouponDetailsCurrentlyOpen].[IsFree] AS [IsFree], 
+    [vCouponDetailsCurrentlyOpen].[IsBOGO] AS [IsBOGO], 
+    [vCouponDetailsCurrentlyOpen].[IsPercentageDiscount] AS [IsPercentageDiscount], 
+    [vCouponDetailsCurrentlyOpen].[isAmountOff] AS [isAmountOff]
+    FROM [dbo].[vCouponDetailsCurrentlyOpen] AS [vCouponDetailsCurrentlyOpen]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCouponInfo" EntityType="Self.vCouponInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCouponInfo].[Coupon] AS [Coupon], 
+    [vCouponInfo].[Description] AS [Description], 
+    [vCouponInfo].[CouponSource] AS [CouponSource], 
+    [vCouponInfo].[StartDate] AS [StartDate], 
+    [vCouponInfo].[ThroughDate] AS [ThroughDate], 
+    [vCouponInfo].[ProductDescription] AS [ProductDescription], 
+    [vCouponInfo].[AmountOff] AS [AmountOff], 
+    [vCouponInfo].[PercentageDiscount] AS [PercentageDiscount], 
+    [vCouponInfo].[DiscountType] AS [DiscountType], 
+    [vCouponInfo].[IsFree] AS [IsFree], 
+    [vCouponInfo].[IsPercentageDiscount] AS [IsPercentageDiscount], 
+    [vCouponInfo].[IsBOGO] AS [IsBOGO], 
+    [vCouponInfo].[isAmountOff] AS [isAmountOff], 
+    [vCouponInfo].[CouponID] AS [CouponID]
+    FROM [dbo].[vCouponInfo] AS [vCouponInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCouponsCurrentlyOpen" EntityType="Self.vCouponsCurrentlyOpen" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCouponsCurrentlyOpen].[CouponID] AS [CouponID], 
+    [vCouponsCurrentlyOpen].[Coupon] AS [Coupon], 
+    [vCouponsCurrentlyOpen].[Description] AS [Description], 
+    [vCouponsCurrentlyOpen].[CouponSourceID] AS [CouponSourceID], 
+    [vCouponsCurrentlyOpen].[StartDate] AS [StartDate], 
+    [vCouponsCurrentlyOpen].[ThroughDate] AS [ThroughDate]
+    FROM [dbo].[vCouponsCurrentlyOpen] AS [vCouponsCurrentlyOpen]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCurrentStoreStatusForAllStores" EntityType="Self.vCurrentStoreStatusForAllStores" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCurrentStoreStatusForAllStores].[StoreID] AS [StoreID], 
+    [vCurrentStoreStatusForAllStores].[DateOfLastStatusChange] AS [DateOfLastStatusChange], 
+    [vCurrentStoreStatusForAllStores].[StoreStatus] AS [StoreStatus], 
+    [vCurrentStoreStatusForAllStores].[IsOpenForBusiness] AS [IsOpenForBusiness], 
+    [vCurrentStoreStatusForAllStores].[IsClosedForever] AS [IsClosedForever], 
+    [vCurrentStoreStatusForAllStores].[StoreStatusID] AS [StoreStatusID], 
+    [vCurrentStoreStatusForAllStores].[myStore] AS [myStore]
+    FROM [dbo].[vCurrentStoreStatusForAllStores] AS [vCurrentStoreStatusForAllStores]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vCurrentStoreStatusForAllStores_Step1" EntityType="Self.vCurrentStoreStatusForAllStores_Step1" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCurrentStoreStatusForAllStores_Step1].[StoreID] AS [StoreID], 
+    [vCurrentStoreStatusForAllStores_Step1].[DateOfLastStatusChange] AS [DateOfLastStatusChange]
+    FROM [dbo].[vCurrentStoreStatusForAllStores_Step1] AS [vCurrentStoreStatusForAllStores_Step1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vEmpl" EntityType="Self.vEmpl" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vEmpl].[EmplID] AS [EmplID], 
+    [vEmpl].[Empl] AS [Empl], 
+    [vEmpl].[LastName] AS [LastName], 
+    [vEmpl].[FirstName] AS [FirstName], 
+    [vEmpl].[StoreID] AS [StoreID], 
+    [vEmpl].[EmplTitleID] AS [EmplTitleID], 
+    [vEmpl].[IsSelfScan] AS [IsSelfScan]
+    FROM [dbo].[vEmpl] AS [vEmpl]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vEmplCountWhoAreCurrentlyEmployedByStore" EntityType="Self.vEmplCountWhoAreCurrentlyEmployedByStore" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vEmplCountWhoAreCurrentlyEmployedByStore].[StoreID] AS [StoreID], 
+    [vEmplCountWhoAreCurrentlyEmployedByStore].[Store] AS [Store], 
+    [vEmplCountWhoAreCurrentlyEmployedByStore].[TotalEmployeesWhoAreEmployed] AS [TotalEmployeesWhoAreEmployed]
+    FROM [dbo].[vEmplCountWhoAreCurrentlyEmployedByStore] AS [vEmplCountWhoAreCurrentlyEmployedByStore]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vEmplDDL" EntityType="Self.vEmplDDL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vEmplDDL].[Empl] AS [Empl], 
+    [vEmplDDL].[EmplID] AS [EmplID], 
+    [vEmplDDL].[FirstName] AS [FirstName], 
+    [vEmplDDL].[LastName] AS [LastName], 
+    [vEmplDDL].[Store] AS [Store], 
+    [vEmplDDL].[Address1] AS [Address1], 
+    [vEmplDDL].[EmplTitle] AS [EmplTitle], 
+    [vEmplDDL].[Summary] AS [Summary]
+    FROM [dbo].[vEmplDDL] AS [vEmplDDL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vEmplGridViewReadOnly" EntityType="Self.vEmplGridViewReadOnly" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vEmplGridViewReadOnly].[Empl] AS [Empl], 
+    [vEmplGridViewReadOnly].[LastName] AS [LastName], 
+    [vEmplGridViewReadOnly].[FirstName] AS [FirstName], 
+    [vEmplGridViewReadOnly].[IsSelfScan] AS [IsSelfScan], 
+    [vEmplGridViewReadOnly].[EmplTitle] AS [EmplTitle], 
+    [vEmplGridViewReadOnly].[Store] AS [Store], 
+    [vEmplGridViewReadOnly].[Address1] AS [Address1]
+    FROM [dbo].[vEmplGridViewReadOnly] AS [vEmplGridViewReadOnly]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vEmplMostCurrentStatusDateChange" EntityType="Self.vEmplMostCurrentStatusDateChange" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vEmplMostCurrentStatusDateChange].[EmplID] AS [EmplID], 
+    [vEmplMostCurrentStatusDateChange].[MostCurrentStatusDateChange] AS [MostCurrentStatusDateChange]
+    FROM [dbo].[vEmplMostCurrentStatusDateChange] AS [vEmplMostCurrentStatusDateChange]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vEmployeeWhoCanBeAStoreManager" EntityType="Self.vEmployeeWhoCanBeAStoreManager" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vEmployeeWhoCanBeAStoreManager].[EmplID] AS [EmplID], 
+    [vEmployeeWhoCanBeAStoreManager].[Empl] AS [Empl], 
+    [vEmployeeWhoCanBeAStoreManager].[LastName] AS [LastName], 
+    [vEmployeeWhoCanBeAStoreManager].[FirstName] AS [FirstName]
+    FROM [dbo].[vEmployeeWhoCanBeAStoreManager] AS [vEmployeeWhoCanBeAStoreManager]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vHourlySalesByCalendarDay" EntityType="Self.vHourlySalesByCalendarDay" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vHourlySalesByCalendarDay].[TotalPrice] AS [TotalPrice], 
+    [vHourlySalesByCalendarDay].[DateOfTransaction] AS [DateOfTransaction], 
+    [vHourlySalesByCalendarDay].[Hour] AS [Hour]
+    FROM [dbo].[vHourlySalesByCalendarDay] AS [vHourlySalesByCalendarDay]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vHourlySalesByCalendarDayGroupedByStore" EntityType="Self.vHourlySalesByCalendarDayGroupedByStore" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vHourlySalesByCalendarDayGroupedByStore].[TotalPrice] AS [TotalPrice], 
+    [vHourlySalesByCalendarDayGroupedByStore].[DateOfTransaction] AS [DateOfTransaction], 
+    [vHourlySalesByCalendarDayGroupedByStore].[Hour] AS [Hour], 
+    [vHourlySalesByCalendarDayGroupedByStore].[StoreID] AS [StoreID], 
+    [vHourlySalesByCalendarDayGroupedByStore].[Store] AS [Store]
+    FROM [dbo].[vHourlySalesByCalendarDayGroupedByStore] AS [vHourlySalesByCalendarDayGroupedByStore]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vLoyaltyIDThatHasBroughtTheMostGroceries" EntityType="Self.vLoyaltyIDThatHasBroughtTheMostGroceries" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vLoyaltyIDThatHasBroughtTheMostGroceries].[LoyaltyID] AS [LoyaltyID], 
+    [vLoyaltyIDThatHasBroughtTheMostGroceries].[SumOfTotalPrice] AS [SumOfTotalPrice]
+    FROM [dbo].[vLoyaltyIDThatHasBroughtTheMostGroceries] AS [vLoyaltyIDThatHasBroughtTheMostGroceries]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice" EntityType="Self.vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice].[LoyaltyNumber] AS [LoyaltyNumber], 
+    [vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice].[TotalPrice] AS [TotalPrice]
+    FROM [dbo].[vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice] AS [vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vNumberOfEachTransactionType" EntityType="Self.vNumberOfEachTransactionType" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vNumberOfEachTransactionType].[TransactionType] AS [TransactionType], 
+    [vNumberOfEachTransactionType].[Expr1] AS [Expr1]
+    FROM [dbo].[vNumberOfEachTransactionType] AS [vNumberOfEachTransactionType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vProductDDL" EntityType="Self.vProductDDL" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vProductDDL].[ProductID] AS [ProductID], 
+    [vProductDDL].[Description] AS [Description], 
+    [vProductDDL].[Name] AS [Name]
+    FROM [dbo].[vProductDDL] AS [vProductDDL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vProductInfo" EntityType="Self.vProductInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vProductInfo].[Name] AS [Name], 
+    [vProductInfo].[Container] AS [Container], 
+    [vProductInfo].[Manufacturer] AS [Manufacturer], 
+    [vProductInfo].[BrandID] AS [BrandID], 
+    [vProductInfo].[Brand] AS [Brand], 
+    [vProductInfo].[ProductID] AS [ProductID], 
+    [vProductInfo].[Description] AS [Description], 
+    [vProductInfo].[Calories] AS [Calories]
+    FROM [dbo].[vProductInfo] AS [vProductInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vProductSalesByHours_NonPrime" EntityType="Self.vProductSalesByHours_NonPrime" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vProductSalesByHours_NonPrime].[NameID] AS [NameID], 
+    [vProductSalesByHours_NonPrime].[Name] AS [Name], 
+    [vProductSalesByHours_NonPrime].[Manufacturer] AS [Manufacturer], 
+    [vProductSalesByHours_NonPrime].[Brand] AS [Brand], 
+    [vProductSalesByHours_NonPrime].[Qty] AS [Qty]
+    FROM [dbo].[vProductSalesByHours_NonPrime] AS [vProductSalesByHours_NonPrime]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vProductSalesByHours_Prime" EntityType="Self.vProductSalesByHours_Prime" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vProductSalesByHours_Prime].[NameID] AS [NameID], 
+    [vProductSalesByHours_Prime].[Name] AS [Name], 
+    [vProductSalesByHours_Prime].[Manufacturer] AS [Manufacturer], 
+    [vProductSalesByHours_Prime].[Brand] AS [Brand], 
+    [vProductSalesByHours_Prime].[Qty] AS [Qty]
+    FROM [dbo].[vProductSalesByHours_Prime] AS [vProductSalesByHours_Prime]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vPurchasesAtStore" EntityType="Self.vPurchasesAtStore" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vPurchasesAtStore].[TransactionID] AS [TransactionID], 
+    [vPurchasesAtStore].[Store] AS [Store], 
+    [vPurchasesAtStore].[StoreNumber] AS [StoreNumber], 
+    [vPurchasesAtStore].[State] AS [State], 
+    [vPurchasesAtStore].[SumOfTotalPrice] AS [SumOfTotalPrice], 
+    [vPurchasesAtStore].[TimeOfTransaction] AS [TimeOfTransaction]
+    FROM [dbo].[vPurchasesAtStore] AS [vPurchasesAtStore]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vPurchaseTotals" EntityType="Self.vPurchaseTotals" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vPurchaseTotals].[TransactionID] AS [TransactionID], 
+    [vPurchaseTotals].[TimeOfTransaction] AS [TimeOfTransaction], 
+    [vPurchaseTotals].[DateOfTransaction] AS [DateOfTransaction], 
+    [vPurchaseTotals].[SumOfTotalPrice] AS [SumOfTotalPrice]
+    FROM [dbo].[vPurchaseTotals] AS [vPurchaseTotals]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vStoreStatusTable" EntityType="Self.vStoreStatusTable" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vStoreStatusTable].[StoreStatusID] AS [StoreStatusID], 
+    [vStoreStatusTable].[StoreStatus] AS [StoreStatus], 
+    [vStoreStatusTable].[IsOpenForBusiness] AS [IsOpenForBusiness], 
+    [vStoreStatusTable].[IsClosedForever] AS [IsClosedForever]
+    FROM [dbo].[vStoreStatusTable] AS [vStoreStatusTable]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vStoreStatusThatIsClosedButNotClosedForever" EntityType="Self.vStoreStatusThatIsClosedButNotClosedForever" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vStoreStatusThatIsClosedButNotClosedForever].[StoreStatusID] AS [StoreStatusID], 
+    [vStoreStatusThatIsClosedButNotClosedForever].[IsOpenForBusiness] AS [IsOpenForBusiness], 
+    [vStoreStatusThatIsClosedButNotClosedForever].[IsClosedForever] AS [IsClosedForever]
+    FROM [dbo].[vStoreStatusThatIsClosedButNotClosedForever] AS [vStoreStatusThatIsClosedButNotClosedForever]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTop10ProductsByQtyOfProduct" EntityType="Self.vTop10ProductsByQtyOfProduct" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTop10ProductsByQtyOfProduct].[ProductID] AS [ProductID], 
+    [vTop10ProductsByQtyOfProduct].[Description] AS [Description], 
+    [vTop10ProductsByQtyOfProduct].[Name] AS [Name], 
+    [vTop10ProductsByQtyOfProduct].[Manufacturer] AS [Manufacturer], 
+    [vTop10ProductsByQtyOfProduct].[SumOfQtyOfProduct] AS [SumOfQtyOfProduct], 
+    [vTop10ProductsByQtyOfProduct].[TransactionTypeID] AS [TransactionTypeID]
+    FROM [dbo].[vTop10ProductsByQtyOfProduct] AS [vTop10ProductsByQtyOfProduct]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTop15MostLoyalCustomers" EntityType="Self.vTop15MostLoyalCustomers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTop15MostLoyalCustomers].[LoyaltyID] AS [LoyaltyID], 
+    [vTop15MostLoyalCustomers].[LoyaltyNumber] AS [LoyaltyNumber], 
+    [vTop15MostLoyalCustomers].[CountOfTransactionID] AS [CountOfTransactionID]
+    FROM [dbo].[vTop15MostLoyalCustomers] AS [vTop15MostLoyalCustomers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTop5CustomersReceivingRefunds" EntityType="Self.vTop5CustomersReceivingRefunds" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTop5CustomersReceivingRefunds].[LoyaltyNumber] AS [LoyaltyNumber], 
+    [vTop5CustomersReceivingRefunds].[Expr1] AS [Expr1], 
+    [vTop5CustomersReceivingRefunds].[TransactionTypeID] AS [TransactionTypeID]
+    FROM [dbo].[vTop5CustomersReceivingRefunds] AS [vTop5CustomersReceivingRefunds]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTopSellingProductByTotalAmount" EntityType="Self.vTopSellingProductByTotalAmount" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTopSellingProductByTotalAmount].[ProductID] AS [ProductID], 
+    [vTopSellingProductByTotalAmount].[Description] AS [Description], 
+    [vTopSellingProductByTotalAmount].[Manufacturer] AS [Manufacturer], 
+    [vTopSellingProductByTotalAmount].[Name] AS [Name], 
+    [vTopSellingProductByTotalAmount].[Expr1] AS [Expr1]
+    FROM [dbo].[vTopSellingProductByTotalAmount] AS [vTopSellingProductByTotalAmount]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTopSpendingLoyaltyNumber" EntityType="Self.vTopSpendingLoyaltyNumber" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTopSpendingLoyaltyNumber].[LoyaltyNumber] AS [LoyaltyNumber], 
+    [vTopSpendingLoyaltyNumber].[TotalPrice] AS [TotalPrice], 
+    [vTopSpendingLoyaltyNumber].[LoyaltyID] AS [LoyaltyID]
+    FROM [dbo].[vTopSpendingLoyaltyNumber] AS [vTopSpendingLoyaltyNumber]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTotalAmountByTransactionType" EntityType="Self.vTotalAmountByTransactionType" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTotalAmountByTransactionType].[TransactionType] AS [TransactionType], 
+    [vTotalAmountByTransactionType].[Expr1] AS [Expr1]
+    FROM [dbo].[vTotalAmountByTransactionType] AS [vTotalAmountByTransactionType]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTotalSalesByProduct" EntityType="Self.vTotalSalesByProduct" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTotalSalesByProduct].[ProductID] AS [ProductID], 
+    [vTotalSalesByProduct].[Description] AS [Description], 
+    [vTotalSalesByProduct].[Name] AS [Name], 
+    [vTotalSalesByProduct].[SaleAmount] AS [SaleAmount]
+    FROM [dbo].[vTotalSalesByProduct] AS [vTotalSalesByProduct]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tCoupon_tCouponSource" Association="Self.FK_tCoupon_tCouponSource">
+      <End Role="tCouponSource" EntitySet="tCouponSource" />
+      <End Role="tCoupon" EntitySet="tCoupon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tCouponDetail_tCoupon" Association="Self.FK_tCouponDetail_tCoupon">
+      <End Role="tCoupon" EntitySet="tCoupon" />
+      <End Role="tCouponDetail" EntitySet="tCouponDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tCouponDetail_tDiscountType" Association="Self.FK_tCouponDetail_tDiscountType">
+      <End Role="tDiscountType" EntitySet="tDiscountType" />
+      <End Role="tCouponDetail" EntitySet="tCouponDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tCouponDetail_tProduct" Association="Self.FK_tCouponDetail_tProduct">
+      <End Role="tProduct" EntitySet="tProduct" />
+      <End Role="tCouponDetail" EntitySet="tCouponDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tEmpl_tEmplTitle" Association="Self.FK_tEmpl_tEmplTitle">
+      <End Role="tEmplTitle" EntitySet="tEmplTitle" />
+      <End Role="tEmpl" EntitySet="tEmpl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tEmpl_tStore" Association="Self.FK_tEmpl_tStore">
+      <End Role="tStore" EntitySet="tStore" />
+      <End Role="tEmpl" EntitySet="tEmpl" />
+    </AssociationSet>
+    <AssociationSet Name="TransactionID_fk1" Association="Self.TransactionID_fk1">
+      <End Role="tTransaction" EntitySet="tTransaction" />
+      <End Role="tTransactionDetail" EntitySet="tTransactionDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

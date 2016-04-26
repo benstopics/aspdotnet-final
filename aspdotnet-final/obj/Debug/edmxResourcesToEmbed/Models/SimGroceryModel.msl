@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SimGroceryModelStoreContainer" CdmEntityContainer="SimGroceryEntities">
+    <EntitySetMapping Name="tConfigs">
+      <EntityTypeMapping TypeName="SimGroceryModel.tConfig">
+        <MappingFragment StoreEntitySet="tConfig">
+          <ScalarProperty Name="ConfigID" ColumnName="ConfigID" />
+          <ScalarProperty Name="MaxStores" ColumnName="MaxStores" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tContainers">
+      <EntityTypeMapping TypeName="SimGroceryModel.tContainer">
+        <MappingFragment StoreEntitySet="tContainer">
+          <ScalarProperty Name="ContainerID" ColumnName="ContainerID" />
+          <ScalarProperty Name="Container" ColumnName="Container" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tCoupons">
+      <EntityTypeMapping TypeName="SimGroceryModel.tCoupon">
+        <MappingFragment StoreEntitySet="tCoupon">
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="Coupon" ColumnName="Coupon" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CouponSourceID" ColumnName="CouponSourceID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ThroughDate" ColumnName="ThroughDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tCouponDetails">
+      <EntityTypeMapping TypeName="SimGroceryModel.tCouponDetail">
+        <MappingFragment StoreEntitySet="tCouponDetail">
+          <ScalarProperty Name="CouponDetailID" ColumnName="CouponDetailID" />
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="DiscountTypeID" ColumnName="DiscountTypeID" />
+          <ScalarProperty Name="PercentageDiscount" ColumnName="PercentageDiscount" />
+          <ScalarProperty Name="AmountOff" ColumnName="AmountOff" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tCouponSources">
+      <EntityTypeMapping TypeName="SimGroceryModel.tCouponSource">
+        <MappingFragment StoreEntitySet="tCouponSource">
+          <ScalarProperty Name="CouponSourceID" ColumnName="CouponSourceID" />
+          <ScalarProperty Name="CouponSource" ColumnName="CouponSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tDiscountTypes">
+      <EntityTypeMapping TypeName="SimGroceryModel.tDiscountType">
+        <MappingFragment StoreEntitySet="tDiscountType">
+          <ScalarProperty Name="DiscountTypeID" ColumnName="DiscountTypeID" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="IsFree" ColumnName="IsFree" />
+          <ScalarProperty Name="IsPercentageDiscount" ColumnName="IsPercentageDiscount" />
+          <ScalarProperty Name="IsBOGO" ColumnName="IsBOGO" />
+          <ScalarProperty Name="isAmountOff" ColumnName="isAmountOff" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tEmpls">
+      <EntityTypeMapping TypeName="SimGroceryModel.tEmpl">
+        <MappingFragment StoreEntitySet="tEmpl">
+          <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+          <ScalarProperty Name="Empl" ColumnName="Empl" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="EmplTitleID" ColumnName="EmplTitleID" />
+          <ScalarProperty Name="IsSelfScan" ColumnName="IsSelfScan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tEmplHistories">
+      <EntityTypeMapping TypeName="SimGroceryModel.tEmplHistory">
+        <MappingFragment StoreEntitySet="tEmplHistory">
+          <ScalarProperty Name="EmplHistoryID" ColumnName="EmplHistoryID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EmplStatusID" ColumnName="EmplStatusID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
+          <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tEmplStatus">
+      <EntityTypeMapping TypeName="SimGroceryModel.tEmplStatu">
+        <MappingFragment StoreEntitySet="tEmplStatus">
+          <ScalarProperty Name="EmplStatusID" ColumnName="EmplStatusID" />
+          <ScalarProperty Name="EmplStatus" ColumnName="EmplStatus" />
+          <ScalarProperty Name="CanWork" ColumnName="CanWork" />
+          <ScalarProperty Name="IsEmployed" ColumnName="IsEmployed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tEmplTitles">
+      <EntityTypeMapping TypeName="SimGroceryModel.tEmplTitle">
+        <MappingFragment StoreEntitySet="tEmplTitle">
+          <ScalarProperty Name="EmplTitleID" ColumnName="EmplTitleID" />
+          <ScalarProperty Name="EmplTitle" ColumnName="EmplTitle" />
+          <ScalarProperty Name="IsStoreManager" ColumnName="IsStoreManager" />
+          <ScalarProperty Name="IsSelfScan" ColumnName="IsSelfScan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tLoyalties">
+      <EntityTypeMapping TypeName="SimGroceryModel.tLoyalty">
+        <MappingFragment StoreEntitySet="tLoyalty">
+          <ScalarProperty Name="LoyaltyID" ColumnName="LoyaltyID" />
+          <ScalarProperty Name="LoyaltyNumber" ColumnName="LoyaltyNumber" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tManufacturers">
+      <EntityTypeMapping TypeName="SimGroceryModel.tManufacturer">
+        <MappingFragment StoreEntitySet="tManufacturer">
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="IsSupplier" ColumnName="IsSupplier" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tNumbers">
+      <EntityTypeMapping TypeName="SimGroceryModel.tNumber">
+        <MappingFragment StoreEntitySet="tNumber">
+          <ScalarProperty Name="NumberID" ColumnName="NumberID" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="IsPrime" ColumnName="IsPrime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tProducts">
+      <EntityTypeMapping TypeName="SimGroceryModel.tProduct">
+        <MappingFragment StoreEntitySet="tProduct">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UPC_E" ColumnName="UPC-E" />
+          <ScalarProperty Name="UPC_A_" ColumnName="UPC-A " />
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="PricePerSellableUnit" ColumnName="PricePerSellableUnit" />
+          <ScalarProperty Name="NameID" ColumnName="NameID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ContainerID" ColumnName="ContainerID" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Size_UOMID" ColumnName="Size_UOMID" />
+          <ScalarProperty Name="I_Size" ColumnName="I_Size" />
+          <ScalarProperty Name="I_UOMID" ColumnName="I_UOMID" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Endorsement_s_" ColumnName="Endorsement(s)" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Prepared___Notes___Health_Claims" ColumnName="Prepared / Notes - Health Claims" />
+          <ScalarProperty Name="Serving_Size" ColumnName="Serving_Size" />
+          <ScalarProperty Name="Serving_Size_UOMID" ColumnName="Serving_Size_UOMID" />
+          <ScalarProperty Name="I_Serving_Size" ColumnName="I_Serving_Size" />
+          <ScalarProperty Name="I_Serving_Size_UOM" ColumnName="I-Serving_Size_UOM" />
+          <ScalarProperty Name="I_Serving_Size_UOMID" ColumnName="I-Serving_Size_UOMID" />
+          <ScalarProperty Name="Pieces" ColumnName="Pieces" />
+          <ScalarProperty Name="Servings_Per_Container" ColumnName="Servings_Per_Container" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+          <ScalarProperty Name="Fat_Calories" ColumnName="Fat_Calories" />
+          <ScalarProperty Name="Total_Fat_G" ColumnName="Total_Fat_G" />
+          <ScalarProperty Name="Dvp_Total_Fat" ColumnName="Dvp_Total_Fat" />
+          <ScalarProperty Name="Saturated_Fat_G" ColumnName="Saturated_Fat_G" />
+          <ScalarProperty Name="Dvp_Saturated_Fat" ColumnName="Dvp_Saturated_Fat" />
+          <ScalarProperty Name="Trans_Fat_G" ColumnName="Trans_Fat_G" />
+          <ScalarProperty Name="Dvp_Trans_Fat" ColumnName="Dvp_Trans_Fat" />
+          <ScalarProperty Name="Polyunsaturated_Fat_G" ColumnName="Polyunsaturated_Fat_G" />
+          <ScalarProperty Name="Monounsaturated_Fat_G" ColumnName="Monounsaturated Fat_G" />
+          <ScalarProperty Name="Cholesterol_MG" ColumnName="Cholesterol_MG" />
+          <ScalarProperty Name="Dvp_Cholesterol" ColumnName="Dvp_Cholesterol" />
+          <ScalarProperty Name="Sodium_MG" ColumnName="Sodium_MG" />
+          <ScalarProperty Name="Dvp_Sodium" ColumnName="Dvp_Sodium" />
+          <ScalarProperty Name="Potassium_MG" ColumnName="Potassium_MG" />
+          <ScalarProperty Name="Dvp_Potassium" ColumnName="Dvp_Potassium" />
+          <ScalarProperty Name="Carbohydrates_G" ColumnName="Carbohydrates_G" />
+          <ScalarProperty Name="Dvp_Carbohydrates" ColumnName="Dvp_Carbohydrates" />
+          <ScalarProperty Name="Fiber_G" ColumnName="Fiber_G" />
+          <ScalarProperty Name="Dvp_Dietary_Fiber" ColumnName="Dvp_Dietary_Fiber" />
+          <ScalarProperty Name="Sugars_G" ColumnName="Sugars_G" />
+          <ScalarProperty Name="Dvp_Sugar" ColumnName="Dvp_Sugar" />
+          <ScalarProperty Name="Other_Carbohydrates_G" ColumnName="Other_Carbohydrates_G" />
+          <ScalarProperty Name="Sugar_Alcohols_G" ColumnName="Sugar Alcohols_G" />
+          <ScalarProperty Name="Protein_G" ColumnName="Protein_G" />
+          <ScalarProperty Name="Dvp_Protein" ColumnName="Dvp_Protein" />
+          <ScalarProperty Name="Net_Carbs_G" ColumnName="Net_Carbs_G" />
+          <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
+          <ScalarProperty Name="Warnings" ColumnName="Warnings" />
+          <ScalarProperty Name="Allergy_Information" ColumnName="Allergy Information" />
+          <ScalarProperty Name="Dvp_Vitamin_A" ColumnName="Dvp_Vitamin_A" />
+          <ScalarProperty Name="Dvp_Vitamin_C" ColumnName="Dvp_Vitamin_C" />
+          <ScalarProperty Name="Dvp_Calcium" ColumnName="Dvp_Calcium" />
+          <ScalarProperty Name="Dvp_Iron" ColumnName="Dvp_Iron" />
+          <ScalarProperty Name="Dvp_Vitamin_D" ColumnName="Dvp_Vitamin_D" />
+          <ScalarProperty Name="Dvp_Vitamin_E" ColumnName="Dvp_Vitamin_E" />
+          <ScalarProperty Name="Dvp_Vitamin_K" ColumnName="Dvp_Vitamin_K" />
+          <ScalarProperty Name="Dvp_Thiamin" ColumnName="Dvp_Thiamin" />
+          <ScalarProperty Name="Dvp_Riboflavin" ColumnName="Dvp_Riboflavin" />
+          <ScalarProperty Name="Dvp_Niacin" ColumnName="Dvp_Niacin" />
+          <ScalarProperty Name="Dvp_Vitamin_B1" ColumnName="Dvp_Vitamin_B1" />
+          <ScalarProperty Name="Dvp_Vitamin_B2" ColumnName="Dvp_Vitamin_B2" />
+          <ScalarProperty Name="Dvp_Vitamin_B6" ColumnName="Dvp_Vitamin_B6" />
+          <ScalarProperty Name="Dvp_Folic_Acid" ColumnName="Dvp_Folic_Acid" />
+          <ScalarProperty Name="Dvp_Vitamin_B12" ColumnName="Dvp_Vitamin_B12" />
+          <ScalarProperty Name="Dvp_Biotin" ColumnName="Dvp_Biotin" />
+          <ScalarProperty Name="DVP_Pantothenic_Acid" ColumnName="DVP_Pantothenic_Acid" />
+          <ScalarProperty Name="Dvp_Phosphorus" ColumnName="Dvp_Phosphorus" />
+          <ScalarProperty Name="Dvp_Iodine" ColumnName="Dvp_Iodine" />
+          <ScalarProperty Name="Dvp_Magnesium" ColumnName="Dvp_Magnesium" />
+          <ScalarProperty Name="Dvp_Zinc" ColumnName="Dvp_Zinc" />
+          <ScalarProperty Name="Dvp_Selenium" ColumnName="Dvp_Selenium" />
+          <ScalarProperty Name="Dvp_Copper" ColumnName="Dvp_Copper" />
+          <ScalarProperty Name="Dvp_Manganese" ColumnName="Dvp_Manganese" />
+          <ScalarProperty Name="Dvp_Chromium" ColumnName="Dvp_Chromium" />
+          <ScalarProperty Name="Dvp_Molybdenum" ColumnName="Dvp_Molybdenum" />
+          <ScalarProperty Name="Dvp_Vitamin_B3" ColumnName="Dvp_Vitamin_B3" />
+          <ScalarProperty Name="Dvp_Vitamin_B5" ColumnName="Dvp_Vitamin_B5" />
+          <ScalarProperty Name="Dvp_Folate" ColumnName="Dvp_Folate" />
+          <ScalarProperty Name="Soluble_Fiber" ColumnName="Soluble Fiber" />
+          <ScalarProperty Name="Insoluble_Fiber" ColumnName="Insoluble Fiber" />
+          <ScalarProperty Name="Phosphate" ColumnName="Phosphate" />
+          <ScalarProperty Name="Chloride" ColumnName="Chloride" />
+          <ScalarProperty Name="Caffeine_Mg" ColumnName="Caffeine_Mg" />
+          <ScalarProperty Name="Silica" ColumnName="Silica" />
+          <ScalarProperty Name="pH" ColumnName="pH" />
+          <ScalarProperty Name="Bicarbonates" ColumnName="Bicarbonates" />
+          <ScalarProperty Name="Total_Dissolved_Solids" ColumnName="Total Dissolved Solids" />
+          <ScalarProperty Name="Omega_3" ColumnName="Omega 3" />
+          <ScalarProperty Name="Oleic_Acid" ColumnName="Oleic Acid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tServing_size_UOM">
+      <EntityTypeMapping TypeName="SimGroceryModel.tServing_size_UOM">
+        <MappingFragment StoreEntitySet="tServing_size_UOM">
+          <ScalarProperty Name="Serving_size_UOMID" ColumnName="Serving_size_UOMID" />
+          <ScalarProperty Name="Serving_size_UOM" ColumnName="Serving_size_UOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tStores">
+      <EntityTypeMapping TypeName="SimGroceryModel.tStore">
+        <MappingFragment StoreEntitySet="tStore">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="Store" ColumnName="Store" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="StoreNumber" ColumnName="StoreNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tStoreHistories">
+      <EntityTypeMapping TypeName="SimGroceryModel.tStoreHistory">
+        <MappingFragment StoreEntitySet="tStoreHistory">
+          <ScalarProperty Name="StoreHistoryID" ColumnName="StoreHistoryID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="StoreStatusID" ColumnName="StoreStatusID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tStoreStatus">
+      <EntityTypeMapping TypeName="SimGroceryModel.tStoreStatu">
+        <MappingFragment StoreEntitySet="tStoreStatus">
+          <ScalarProperty Name="StoreStatusID" ColumnName="StoreStatusID" />
+          <ScalarProperty Name="StoreStatus" ColumnName="StoreStatus" />
+          <ScalarProperty Name="IsOpenForBusiness" ColumnName="IsOpenForBusiness" />
+          <ScalarProperty Name="IsClosedForever" ColumnName="IsClosedForever" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tSupplyChains">
+      <EntityTypeMapping TypeName="SimGroceryModel.tSupplyChain">
+        <MappingFragment StoreEntitySet="tSupplyChain">
+          <ScalarProperty Name="SupplyChainID" ColumnName="SupplyChainID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTransactions">
+      <EntityTypeMapping TypeName="SimGroceryModel.tTransaction">
+        <MappingFragment StoreEntitySet="tTransaction">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TimeOfTransaction" ColumnName="TimeOfTransaction" />
+          <ScalarProperty Name="DateOfTransaction" ColumnName="DateOfTransaction" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="LoyaltyID" ColumnName="LoyaltyID" />
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+          <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="DateEntered" ColumnName="DateEntered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTransactionDetails">
+      <EntityTypeMapping TypeName="SimGroceryModel.tTransactionDetail">
+        <MappingFragment StoreEntitySet="tTransactionDetail">
+          <ScalarProperty Name="TransactionDetailID" ColumnName="TransactionDetailID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="QtyOfProduct" ColumnName="QtyOfProduct" />
+          <ScalarProperty Name="PricePerSellableUnit" ColumnName="PricePerSellableUnit" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CouponDetailID" ColumnName="CouponDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTransactionTypes">
+      <EntityTypeMapping TypeName="SimGroceryModel.tTransactionType">
+        <MappingFragment StoreEntitySet="tTransactionType">
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tUOMs">
+      <EntityTypeMapping TypeName="SimGroceryModel.tUOM">
+        <MappingFragment StoreEntitySet="tUOM">
+          <ScalarProperty Name="UOMID" ColumnName="UOMID" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tBrands">
+      <EntityTypeMapping TypeName="SimGroceryModel.tBrand">
+        <MappingFragment StoreEntitySet="tBrand">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tNames">
+      <EntityTypeMapping TypeName="SimGroceryModel.tName">
+        <MappingFragment StoreEntitySet="tName">
+          <ScalarProperty Name="NameID" ColumnName="NameID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vAllTransactionsOfTopSpendingLoyaltyNumbers">
+      <EntityTypeMapping TypeName="SimGroceryModel.vAllTransactionsOfTopSpendingLoyaltyNumber">
+        <MappingFragment StoreEntitySet="vAllTransactionsOfTopSpendingLoyaltyNumber">
+          <ScalarProperty Name="LoyaltyNumber" ColumnName="LoyaltyNumber" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vAveries">
+      <EntityTypeMapping TypeName="SimGroceryModel.vAvery">
+        <MappingFragment StoreEntitySet="vAvery">
+          <ScalarProperty Name="Store" ColumnName="Store" />
+          <ScalarProperty Name="StoreNumber" ColumnName="StoreNumber" />
+          <ScalarProperty Name="TimeOfTransaction" ColumnName="TimeOfTransaction" />
+          <ScalarProperty Name="DateOfTransaction" ColumnName="DateOfTransaction" />
+          <ScalarProperty Name="SumOfTotalPrice" ColumnName="SumOfTotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCountOfTransactionsByStoreAndLoyalties">
+      <EntityTypeMapping TypeName="SimGroceryModel.vCountOfTransactionsByStoreAndLoyalty">
+        <MappingFragment StoreEntitySet="vCountOfTransactionsByStoreAndLoyalty">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="Store" ColumnName="Store" />
+          <ScalarProperty Name="LoyaltyNumber" ColumnName="LoyaltyNumber" />
+          <ScalarProperty Name="CountOfTransactions" ColumnName="CountOfTransactions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCoupons">
+      <EntityTypeMapping TypeName="SimGroceryModel.vCoupon">
+        <MappingFragment StoreEntitySet="vCoupon">
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="Coupon" ColumnName="Coupon" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CouponSourceID" ColumnName="CouponSourceID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ThroughDate" ColumnName="ThroughDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCouponDetailsCurrentlyOpens">
+      <EntityTypeMapping TypeName="SimGroceryModel.vCouponDetailsCurrentlyOpen">
+        <MappingFragment StoreEntitySet="vCouponDetailsCurrentlyOpen">
+          <ScalarProperty Name="CouponDetailID" ColumnName="CouponDetailID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="DiscountTypeID" ColumnName="DiscountTypeID" />
+          <ScalarProperty Name="AmountOff" ColumnName="AmountOff" />
+          <ScalarProperty Name="PercentageDiscount" ColumnName="PercentageDiscount" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="IsFree" ColumnName="IsFree" />
+          <ScalarProperty Name="IsBOGO" ColumnName="IsBOGO" />
+          <ScalarProperty Name="IsPercentageDiscount" ColumnName="IsPercentageDiscount" />
+          <ScalarProperty Name="isAmountOff" ColumnName="isAmountOff" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCouponInfoes">
+      <EntityTypeMapping TypeName="SimGroceryModel.vCouponInfo">
+        <MappingFragment StoreEntitySet="vCouponInfo">
+          <ScalarProperty Name="Coupon" ColumnName="Coupon" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CouponSource" ColumnName="CouponSource" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ThroughDate" ColumnName="ThroughDate" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="AmountOff" ColumnName="AmountOff" />
+          <ScalarProperty Name="PercentageDiscount" ColumnName="PercentageDiscount" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="IsFree" ColumnName="IsFree" />
+          <ScalarProperty Name="IsPercentageDiscount" ColumnName="IsPercentageDiscount" />
+          <ScalarProperty Name="IsBOGO" ColumnName="IsBOGO" />
+          <ScalarProperty Name="isAmountOff" ColumnName="isAmountOff" />
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCouponsCurrentlyOpens">
+      <EntityTypeMapping TypeName="SimGroceryModel.vCouponsCurrentlyOpen">
+        <MappingFragment StoreEntitySet="vCouponsCurrentlyOpen">
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="Coupon" ColumnName="Coupon" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CouponSourceID" ColumnName="CouponSourceID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ThroughDate" ColumnName="ThroughDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCurrentStoreStatusForAllStores">
+      <EntityTypeMapping TypeName="SimGroceryModel.vCurrentStoreStatusForAllStore">
+        <MappingFragment StoreEntitySet="vCurrentStoreStatusForAllStores">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="DateOfLastStatusChange" ColumnName="DateOfLastStatusChange" />
+          <ScalarProperty Name="StoreStatus" ColumnName="StoreStatus" />
+          <ScalarProperty Name="IsOpenForBusiness" ColumnName="IsOpenForBusiness" />
+          <ScalarProperty Name="IsClosedForever" ColumnName="IsClosedForever" />
+          <ScalarProperty Name="StoreStatusID" ColumnName="StoreStatusID" />
+          <ScalarProperty Name="myStore" ColumnName="myStore" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCurrentStoreStatusForAllStores_Step1">
+      <EntityTypeMapping TypeName="SimGroceryModel.vCurrentStoreStatusForAllStores_Step1">
+        <MappingFragment StoreEntitySet="vCurrentStoreStatusForAllStores_Step1">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="DateOfLastStatusChange" ColumnName="DateOfLastStatusChange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vEmpls">
+      <EntityTypeMapping TypeName="SimGroceryModel.vEmpl">
+        <MappingFragment StoreEntitySet="vEmpl">
+          <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+          <ScalarProperty Name="Empl" ColumnName="Empl" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="EmplTitleID" ColumnName="EmplTitleID" />
+          <ScalarProperty Name="IsSelfScan" ColumnName="IsSelfScan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vEmplCountWhoAreCurrentlyEmployedByStores">
+      <EntityTypeMapping TypeName="SimGroceryModel.vEmplCountWhoAreCurrentlyEmployedByStore">
+        <MappingFragment StoreEntitySet="vEmplCountWhoAreCurrentlyEmployedByStore">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="Store" ColumnName="Store" />
+          <ScalarProperty Name="TotalEmployeesWhoAreEmployed" ColumnName="TotalEmployeesWhoAreEmployed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vEmplDDLs">
+      <EntityTypeMapping TypeName="SimGroceryModel.vEmplDDL">
+        <MappingFragment StoreEntitySet="vEmplDDL">
+          <ScalarProperty Name="Empl" ColumnName="Empl" />
+          <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Store" ColumnName="Store" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="EmplTitle" ColumnName="EmplTitle" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vEmplGridViewReadOnlies">
+      <EntityTypeMapping TypeName="SimGroceryModel.vEmplGridViewReadOnly">
+        <MappingFragment StoreEntitySet="vEmplGridViewReadOnly">
+          <ScalarProperty Name="Empl" ColumnName="Empl" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="IsSelfScan" ColumnName="IsSelfScan" />
+          <ScalarProperty Name="EmplTitle" ColumnName="EmplTitle" />
+          <ScalarProperty Name="Store" ColumnName="Store" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vEmplMostCurrentStatusDateChanges">
+      <EntityTypeMapping TypeName="SimGroceryModel.vEmplMostCurrentStatusDateChange">
+        <MappingFragment StoreEntitySet="vEmplMostCurrentStatusDateChange">
+          <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+          <ScalarProperty Name="MostCurrentStatusDateChange" ColumnName="MostCurrentStatusDateChange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vEmployeeWhoCanBeAStoreManagers">
+      <EntityTypeMapping TypeName="SimGroceryModel.vEmployeeWhoCanBeAStoreManager">
+        <MappingFragment StoreEntitySet="vEmployeeWhoCanBeAStoreManager">
+          <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+          <ScalarProperty Name="Empl" ColumnName="Empl" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vHourlySalesByCalendarDays">
+      <EntityTypeMapping TypeName="SimGroceryModel.vHourlySalesByCalendarDay">
+        <MappingFragment StoreEntitySet="vHourlySalesByCalendarDay">
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="DateOfTransaction" ColumnName="DateOfTransaction" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vHourlySalesByCalendarDayGroupedByStores">
+      <EntityTypeMapping TypeName="SimGroceryModel.vHourlySalesByCalendarDayGroupedByStore">
+        <MappingFragment StoreEntitySet="vHourlySalesByCalendarDayGroupedByStore">
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="DateOfTransaction" ColumnName="DateOfTransaction" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="Store" ColumnName="Store" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vLoyaltyIDThatHasBroughtTheMostGroceries">
+      <EntityTypeMapping TypeName="SimGroceryModel.vLoyaltyIDThatHasBroughtTheMostGrocery">
+        <MappingFragment StoreEntitySet="vLoyaltyIDThatHasBroughtTheMostGroceries">
+          <ScalarProperty Name="LoyaltyID" ColumnName="LoyaltyID" />
+          <ScalarProperty Name="SumOfTotalPrice" ColumnName="SumOfTotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrices">
+      <EntityTypeMapping TypeName="SimGroceryModel.vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice">
+        <MappingFragment StoreEntitySet="vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice">
+          <ScalarProperty Name="LoyaltyNumber" ColumnName="LoyaltyNumber" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vNumberOfEachTransactionTypes">
+      <EntityTypeMapping TypeName="SimGroceryModel.vNumberOfEachTransactionType">
+        <MappingFragment StoreEntitySet="vNumberOfEachTransactionType">
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProductDDLs">
+      <EntityTypeMapping TypeName="SimGroceryModel.vProductDDL">
+        <MappingFragment StoreEntitySet="vProductDDL">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProductInfoes">
+      <EntityTypeMapping TypeName="SimGroceryModel.vProductInfo">
+        <MappingFragment StoreEntitySet="vProductInfo">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Container" ColumnName="Container" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProductSalesByHours_NonPrime">
+      <EntityTypeMapping TypeName="SimGroceryModel.vProductSalesByHours_NonPrime">
+        <MappingFragment StoreEntitySet="vProductSalesByHours_NonPrime">
+          <ScalarProperty Name="NameID" ColumnName="NameID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vProductSalesByHours_Prime">
+      <EntityTypeMapping TypeName="SimGroceryModel.vProductSalesByHours_Prime">
+        <MappingFragment StoreEntitySet="vProductSalesByHours_Prime">
+          <ScalarProperty Name="NameID" ColumnName="NameID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vPurchasesAtStores">
+      <EntityTypeMapping TypeName="SimGroceryModel.vPurchasesAtStore">
+        <MappingFragment StoreEntitySet="vPurchasesAtStore">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="Store" ColumnName="Store" />
+          <ScalarProperty Name="StoreNumber" ColumnName="StoreNumber" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="SumOfTotalPrice" ColumnName="SumOfTotalPrice" />
+          <ScalarProperty Name="TimeOfTransaction" ColumnName="TimeOfTransaction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vPurchaseTotals">
+      <EntityTypeMapping TypeName="SimGroceryModel.vPurchaseTotal">
+        <MappingFragment StoreEntitySet="vPurchaseTotals">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TimeOfTransaction" ColumnName="TimeOfTransaction" />
+          <ScalarProperty Name="DateOfTransaction" ColumnName="DateOfTransaction" />
+          <ScalarProperty Name="SumOfTotalPrice" ColumnName="SumOfTotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vStoreStatusTables">
+      <EntityTypeMapping TypeName="SimGroceryModel.vStoreStatusTable">
+        <MappingFragment StoreEntitySet="vStoreStatusTable">
+          <ScalarProperty Name="StoreStatusID" ColumnName="StoreStatusID" />
+          <ScalarProperty Name="StoreStatus" ColumnName="StoreStatus" />
+          <ScalarProperty Name="IsOpenForBusiness" ColumnName="IsOpenForBusiness" />
+          <ScalarProperty Name="IsClosedForever" ColumnName="IsClosedForever" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vStoreStatusThatIsClosedButNotClosedForevers">
+      <EntityTypeMapping TypeName="SimGroceryModel.vStoreStatusThatIsClosedButNotClosedForever">
+        <MappingFragment StoreEntitySet="vStoreStatusThatIsClosedButNotClosedForever">
+          <ScalarProperty Name="StoreStatusID" ColumnName="StoreStatusID" />
+          <ScalarProperty Name="IsOpenForBusiness" ColumnName="IsOpenForBusiness" />
+          <ScalarProperty Name="IsClosedForever" ColumnName="IsClosedForever" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTop10ProductsByQtyOfProduct">
+      <EntityTypeMapping TypeName="SimGroceryModel.vTop10ProductsByQtyOfProduct">
+        <MappingFragment StoreEntitySet="vTop10ProductsByQtyOfProduct">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="SumOfQtyOfProduct" ColumnName="SumOfQtyOfProduct" />
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTop15MostLoyalCustomers">
+      <EntityTypeMapping TypeName="SimGroceryModel.vTop15MostLoyalCustomers">
+        <MappingFragment StoreEntitySet="vTop15MostLoyalCustomers">
+          <ScalarProperty Name="LoyaltyID" ColumnName="LoyaltyID" />
+          <ScalarProperty Name="LoyaltyNumber" ColumnName="LoyaltyNumber" />
+          <ScalarProperty Name="CountOfTransactionID" ColumnName="CountOfTransactionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTop5CustomersReceivingRefunds">
+      <EntityTypeMapping TypeName="SimGroceryModel.vTop5CustomersReceivingRefunds">
+        <MappingFragment StoreEntitySet="vTop5CustomersReceivingRefunds">
+          <ScalarProperty Name="LoyaltyNumber" ColumnName="LoyaltyNumber" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTopSellingProductByTotalAmounts">
+      <EntityTypeMapping TypeName="SimGroceryModel.vTopSellingProductByTotalAmount">
+        <MappingFragment StoreEntitySet="vTopSellingProductByTotalAmount">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTopSpendingLoyaltyNumbers">
+      <EntityTypeMapping TypeName="SimGroceryModel.vTopSpendingLoyaltyNumber">
+        <MappingFragment StoreEntitySet="vTopSpendingLoyaltyNumber">
+          <ScalarProperty Name="LoyaltyNumber" ColumnName="LoyaltyNumber" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="LoyaltyID" ColumnName="LoyaltyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTotalAmountByTransactionTypes">
+      <EntityTypeMapping TypeName="SimGroceryModel.vTotalAmountByTransactionType">
+        <MappingFragment StoreEntitySet="vTotalAmountByTransactionType">
+          <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTotalSalesByProducts">
+      <EntityTypeMapping TypeName="SimGroceryModel.vTotalSalesByProduct">
+        <MappingFragment StoreEntitySet="vTotalSalesByProduct">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SaleAmount" ColumnName="SaleAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.fEmployeesWhoCanBeAStoreManager" FunctionImportName="fEmployeesWhoCanBeAStoreManager">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.fEmployeesWhoCanBeAStoreManager_Result">
+          <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+          <ScalarProperty Name="Empl" ColumnName="Empl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.fGetCouponDetailsCurrentlyOpenByProductID" FunctionImportName="fGetCouponDetailsCurrentlyOpenByProductID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.fGetCouponDetailsCurrentlyOpenByProductID_Result">
+          <ScalarProperty Name="couponDetailID" ColumnName="couponDetailID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.fGetCouponInfo" FunctionImportName="fGetCouponInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.fGetCouponInfo_Result">
+          <ScalarProperty Name="Coupon" ColumnName="Coupon" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CouponSource" ColumnName="CouponSource" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ThroughDate" ColumnName="ThroughDate" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="AmountOff" ColumnName="AmountOff" />
+          <ScalarProperty Name="PercentageDiscount" ColumnName="PercentageDiscount" />
+          <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+          <ScalarProperty Name="IsFree" ColumnName="IsFree" />
+          <ScalarProperty Name="IsPercentageDiscount" ColumnName="IsPercentageDiscount" />
+          <ScalarProperty Name="IsBOGO" ColumnName="IsBOGO" />
+          <ScalarProperty Name="isAmountOff" ColumnName="isAmountOff" />
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.fGetCouponsOpen" FunctionImportName="fGetCouponsOpen">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.fGetCouponsOpen_Result">
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="Coupon" ColumnName="Coupon" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CouponSourceID" ColumnName="CouponSourceID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ThroughDate" ColumnName="ThroughDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.fGetCurrentEmplStatus" FunctionImportName="fGetCurrentEmplStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.fGetCurrentEmplStatus_Result">
+          <ScalarProperty Name="EmplID" ColumnName="EmplID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EmplStatus" ColumnName="EmplStatus" />
+          <ScalarProperty Name="CanWork" ColumnName="CanWork" />
+          <ScalarProperty Name="IsEmployed" ColumnName="IsEmployed" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.fGetCurrentStoreStatus" FunctionImportName="fGetCurrentStoreStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.fGetCurrentStoreStatus_Result">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="StoreStatus" ColumnName="StoreStatus" />
+          <ScalarProperty Name="IsopenForBusiness" ColumnName="IsopenForBusiness" />
+          <ScalarProperty Name="IsClosedForever" ColumnName="IsClosedForever" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.fGetEmplStatus_CanWork" FunctionImportName="fGetEmplStatus_CanWork">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.fGetEmplStatus_CanWork_Result">
+          <ScalarProperty Name="EmplStatusID" ColumnName="EmplStatusID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.fGetStoreInfo" FunctionImportName="fGetStoreInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.fGetStoreInfo_Result">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="Store" ColumnName="Store" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="StoreNumber" ColumnName="StoreNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.fTotalSalesByProduct" FunctionImportName="fTotalSalesByProduct">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.fTotalSalesByProduct_Result">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SaleAmount" ColumnName="SaleAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="SimGroceryModel.Store.zzzSQLInjection" FunctionImportName="zzzSQLInjection">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.zzzSQLInjection_Result">
+          <ScalarProperty Name="Store" ColumnName="Store" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spAddEmpl" FunctionName="SimGroceryModel.Store.spAddEmpl" />
+    <FunctionImportMapping FunctionImportName="spAddStore" FunctionName="SimGroceryModel.Store.spAddStore">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.spAddStore_Result">
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spAddStoreWithStoreStatus" FunctionName="SimGroceryModel.Store.spAddStoreWithStoreStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SimGroceryModel.spAddStoreWithStoreStatus_Result">
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spAddTransactionAndDetail" FunctionName="SimGroceryModel.Store.spAddTransactionAndDetail" />
+    <FunctionImportMapping FunctionImportName="spAddTransactionDetail" FunctionName="SimGroceryModel.Store.spAddTransactionDetail" />
+    <FunctionImportMapping FunctionImportName="spInitEmplHistory" FunctionName="SimGroceryModel.Store.spInitEmplHistory" />
+    <FunctionImportMapping FunctionImportName="spInitStoreHistory" FunctionName="SimGroceryModel.Store.spInitStoreHistory" />
+    <FunctionImportMapping FunctionImportName="spUpdateEmplStatus" FunctionName="SimGroceryModel.Store.spUpdateEmplStatus" />
+    <FunctionImportMapping FunctionImportName="spUpdateStoreStatus" FunctionName="SimGroceryModel.Store.spUpdateStoreStatus" />
+  </EntityContainerMapping>
+</Mapping>

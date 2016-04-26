@@ -1,0 +1,1113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SimGroceryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="fEmployeesWhoCanBeAStoreManager_Result">
+    <Property Name="EmplID" Type="Int32" Nullable="false" />
+    <Property Name="Empl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="fGetCouponDetailsCurrentlyOpenByProductID_Result">
+    <Property Name="couponDetailID" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="fGetCouponInfo_Result">
+    <Property Name="Coupon" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CouponSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="ThroughDate" Type="DateTime" />
+    <Property Name="Expr1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AmountOff" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PercentageDiscount" Type="Int32" />
+    <Property Name="DiscountType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsFree" Type="Boolean" Nullable="false" />
+    <Property Name="IsPercentageDiscount" Type="Boolean" Nullable="false" />
+    <Property Name="IsBOGO" Type="Boolean" Nullable="false" />
+    <Property Name="isAmountOff" Type="Int64" />
+    <Property Name="CouponID" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="fGetCouponsOpen_Result">
+    <Property Name="CouponID" Type="Int32" Nullable="false" />
+    <Property Name="Coupon" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CouponSourceID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="ThroughDate" Type="DateTime" />
+  </ComplexType>
+  <ComplexType Name="fGetCurrentEmplStatus_Result">
+    <Property Name="EmplID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="EmplStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CanWork" Type="Boolean" Nullable="false" />
+    <Property Name="IsEmployed" Type="Boolean" />
+  </ComplexType>
+  <ComplexType Name="fGetCurrentStoreStatus_Result">
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" />
+    <Property Name="StoreStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsopenForBusiness" Type="Boolean" Nullable="false" />
+    <Property Name="IsClosedForever" Type="Boolean" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="fGetEmplStatus_CanWork_Result">
+    <Property Name="EmplStatusID" Type="Int32" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="fGetStoreInfo_Result">
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address1" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address2" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Zip" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ManagerID" Type="Int32" Nullable="false" />
+    <Property Name="StoreNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="fTotalSalesByProduct_Result">
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SaleAmount" Type="Decimal" Precision="19" Scale="4" />
+  </ComplexType>
+  <ComplexType Name="zzzSQLInjection_Result">
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="tConfig">
+    <Key>
+      <PropertyRef Name="ConfigID" />
+    </Key>
+    <Property Name="ConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaxStores" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tContainer">
+    <Key>
+      <PropertyRef Name="ContainerID" />
+    </Key>
+    <Property Name="ContainerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Container" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tCoupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Coupon" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CouponSourceID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="ThroughDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tCouponSource" Relationship="Self.FK_tCoupon_tCouponSource" FromRole="tCoupon" ToRole="tCouponSource" />
+    <NavigationProperty Name="tCouponDetails" Relationship="Self.FK_tCouponDetail_tCoupon" FromRole="tCoupon" ToRole="tCouponDetail" />
+  </EntityType>
+  <EntityType Name="tCouponDetail">
+    <Key>
+      <PropertyRef Name="CouponDetailID" />
+    </Key>
+    <Property Name="CouponDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CouponID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="DiscountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="PercentageDiscount" Type="Int32" />
+    <Property Name="AmountOff" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="tCoupon" Relationship="Self.FK_tCouponDetail_tCoupon" FromRole="tCouponDetail" ToRole="tCoupon" />
+    <NavigationProperty Name="tDiscountType" Relationship="Self.FK_tCouponDetail_tDiscountType" FromRole="tCouponDetail" ToRole="tDiscountType" />
+    <NavigationProperty Name="tProduct" Relationship="Self.FK_tCouponDetail_tProduct" FromRole="tCouponDetail" ToRole="tProduct" />
+  </EntityType>
+  <EntityType Name="tCouponSource">
+    <Key>
+      <PropertyRef Name="CouponSourceID" />
+    </Key>
+    <Property Name="CouponSourceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CouponSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tCoupons" Relationship="Self.FK_tCoupon_tCouponSource" FromRole="tCouponSource" ToRole="tCoupon" />
+  </EntityType>
+  <EntityType Name="tDiscountType">
+    <Key>
+      <PropertyRef Name="DiscountTypeID" />
+    </Key>
+    <Property Name="DiscountTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DiscountType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsFree" Type="Boolean" Nullable="false" />
+    <Property Name="IsPercentageDiscount" Type="Boolean" Nullable="false" />
+    <Property Name="IsBOGO" Type="Boolean" Nullable="false" />
+    <Property Name="isAmountOff" Type="Int64" />
+    <NavigationProperty Name="tCouponDetails" Relationship="Self.FK_tCouponDetail_tDiscountType" FromRole="tDiscountType" ToRole="tCouponDetail" />
+  </EntityType>
+  <EntityType Name="tEmpl">
+    <Key>
+      <PropertyRef Name="EmplID" />
+    </Key>
+    <Property Name="EmplID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Empl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="StoreID" Type="Int32" />
+    <Property Name="EmplTitleID" Type="Int32" />
+    <Property Name="IsSelfScan" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tEmplTitle" Relationship="Self.FK_tEmpl_tEmplTitle" FromRole="tEmpl" ToRole="tEmplTitle" />
+    <NavigationProperty Name="tStore" Relationship="Self.FK_tEmpl_tStore" FromRole="tEmpl" ToRole="tStore" />
+  </EntityType>
+  <EntityType Name="tEmplHistory">
+    <Key>
+      <PropertyRef Name="EmplHistoryID" />
+    </Key>
+    <Property Name="EmplHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmplStatusID" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmplID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tEmplStatu">
+    <Key>
+      <PropertyRef Name="EmplStatusID" />
+    </Key>
+    <Property Name="EmplStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmplStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CanWork" Type="Boolean" Nullable="false" />
+    <Property Name="IsEmployed" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tEmplTitle">
+    <Key>
+      <PropertyRef Name="EmplTitleID" />
+    </Key>
+    <Property Name="EmplTitleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmplTitle" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IsStoreManager" Type="Boolean" Nullable="false" />
+    <Property Name="IsSelfScan" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tEmpls" Relationship="Self.FK_tEmpl_tEmplTitle" FromRole="tEmplTitle" ToRole="tEmpl" />
+  </EntityType>
+  <EntityType Name="tLoyalty">
+    <Key>
+      <PropertyRef Name="LoyaltyID" />
+    </Key>
+    <Property Name="LoyaltyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoyaltyNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="tManufacturer">
+    <Key>
+      <PropertyRef Name="ManufacturerID" />
+    </Key>
+    <Property Name="ManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IsSupplier" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tNumber">
+    <Key>
+      <PropertyRef Name="NumberID" />
+    </Key>
+    <Property Name="NumberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsPrime" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tProduct">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UPC_E" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UPC_A_" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+    <Property Name="ManufacturerID" Type="Int32" />
+    <Property Name="BrandID" Type="Int32" />
+    <Property Name="PricePerSellableUnit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NameID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ContainerID" Type="Int32" />
+    <Property Name="Size" Type="Double" />
+    <Property Name="Size_UOMID" Type="Int32" />
+    <Property Name="I_Size" Type="Double" />
+    <Property Name="I_UOMID" Type="Int32" />
+    <Property Name="Parent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Count" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Endorsement_s_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Prepared___Notes___Health_Claims" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Serving_Size" Type="Double" />
+    <Property Name="Serving_Size_UOMID" Type="Int32" />
+    <Property Name="I_Serving_Size" Type="Double" />
+    <Property Name="I_Serving_Size_UOM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="I_Serving_Size_UOMID" Type="Int32" />
+    <Property Name="Pieces" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Servings_Per_Container" Type="Double" />
+    <Property Name="Calories" Type="Double" />
+    <Property Name="Fat_Calories" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Total_Fat_G" Type="Double" />
+    <Property Name="Dvp_Total_Fat" Type="Double" />
+    <Property Name="Saturated_Fat_G" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Saturated_Fat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Trans_Fat_G" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Trans_Fat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Polyunsaturated_Fat_G" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Monounsaturated_Fat_G" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Cholesterol_MG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Cholesterol" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Sodium_MG" Type="Double" />
+    <Property Name="Dvp_Sodium" Type="Double" />
+    <Property Name="Potassium_MG" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Potassium" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Carbohydrates_G" Type="Double" />
+    <Property Name="Dvp_Carbohydrates" Type="Double" />
+    <Property Name="Fiber_G" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Dietary_Fiber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Sugars_G" Type="Double" />
+    <Property Name="Dvp_Sugar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Other_Carbohydrates_G" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Sugar_Alcohols_G" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Protein_G" Type="Double" />
+    <Property Name="Dvp_Protein" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Net_Carbs_G" Type="Double" />
+    <Property Name="Ingredients" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Warnings" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Allergy_Information" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Vitamin_A" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Vitamin_C" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Calcium" Type="Double" />
+    <Property Name="Dvp_Iron" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Vitamin_D" Type="Double" />
+    <Property Name="Dvp_Vitamin_E" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Vitamin_K" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Thiamin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Riboflavin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Niacin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Vitamin_B1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Vitamin_B2" Type="Double" />
+    <Property Name="Dvp_Vitamin_B6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Folic_Acid" Type="Double" />
+    <Property Name="Dvp_Vitamin_B12" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Biotin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DVP_Pantothenic_Acid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Phosphorus" Type="Double" />
+    <Property Name="Dvp_Iodine" Type="Double" />
+    <Property Name="Dvp_Magnesium" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Zinc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Selenium" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Copper" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Manganese" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Chromium" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Molybdenum" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Vitamin_B3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Vitamin_B5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Dvp_Folate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Soluble_Fiber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Insoluble_Fiber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Phosphate" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Chloride" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Caffeine_Mg" Type="Double" />
+    <Property Name="Silica" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="pH" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Bicarbonates" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Total_Dissolved_Solids" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Omega_3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Oleic_Acid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tCouponDetails" Relationship="Self.FK_tCouponDetail_tProduct" FromRole="tProduct" ToRole="tCouponDetail" />
+  </EntityType>
+  <EntityType Name="tServing_size_UOM">
+    <Key>
+      <PropertyRef Name="Serving_size_UOMID" />
+    </Key>
+    <Property Name="Serving_size_UOMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Serving_size_UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tStore">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address1" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address2" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Zip" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ManagerID" Type="Int32" Nullable="false" />
+    <Property Name="StoreNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tEmpls" Relationship="Self.FK_tEmpl_tStore" FromRole="tStore" ToRole="tEmpl" />
+  </EntityType>
+  <EntityType Name="tStoreHistory">
+    <Key>
+      <PropertyRef Name="StoreHistoryID" />
+    </Key>
+    <Property Name="StoreHistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="StoreStatusID" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateStamp" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tStoreStatu">
+    <Key>
+      <PropertyRef Name="StoreStatusID" />
+    </Key>
+    <Property Name="StoreStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsOpenForBusiness" Type="Boolean" Nullable="false" />
+    <Property Name="IsClosedForever" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tSupplyChain">
+    <Key>
+      <PropertyRef Name="SupplyChainID" />
+    </Key>
+    <Property Name="SupplyChainID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tTransaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TimeOfTransaction" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="DateOfTransaction" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="LoyaltyID" Type="Int32" Nullable="false" />
+    <Property Name="TransactionTypeID" Type="Int32" Nullable="false" />
+    <Property Name="EmplID" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateEntered" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="tTransactionDetails" Relationship="Self.TransactionID_fk1" FromRole="tTransaction" ToRole="tTransactionDetail" />
+  </EntityType>
+  <EntityType Name="tTransactionDetail">
+    <Key>
+      <PropertyRef Name="TransactionDetailID" />
+    </Key>
+    <Property Name="TransactionDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionID" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="QtyOfProduct" Type="Int32" />
+    <Property Name="PricePerSellableUnit" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CouponDetailID" Type="Int32" />
+    <NavigationProperty Name="tTransaction" Relationship="Self.TransactionID_fk1" FromRole="tTransactionDetail" ToRole="tTransaction" />
+  </EntityType>
+  <EntityType Name="tTransactionType">
+    <Key>
+      <PropertyRef Name="TransactionTypeID" />
+    </Key>
+    <Property Name="TransactionTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tUOM">
+    <Key>
+      <PropertyRef Name="UOMID" />
+    </Key>
+    <Property Name="UOMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tBrand">
+    <Key>
+      <PropertyRef Name="Brand" />
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="Int32" Nullable="false" />
+    <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tName">
+    <Key>
+      <PropertyRef Name="NameID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="NameID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vAllTransactionsOfTopSpendingLoyaltyNumber">
+    <Key>
+      <PropertyRef Name="LoyaltyNumber" />
+    </Key>
+    <Property Name="LoyaltyNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Expr1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Expr2" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vAvery">
+    <Key>
+      <PropertyRef Name="Store" />
+      <PropertyRef Name="StoreNumber" />
+      <PropertyRef Name="TimeOfTransaction" />
+      <PropertyRef Name="DateOfTransaction" />
+    </Key>
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="StoreNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TimeOfTransaction" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="DateOfTransaction" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SumOfTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="vCountOfTransactionsByStoreAndLoyalty">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="Store" />
+    </Key>
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LoyaltyNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CountOfTransactions" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vCoupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+      <PropertyRef Name="Coupon" />
+      <PropertyRef Name="CouponSourceID" />
+    </Key>
+    <Property Name="CouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Coupon" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CouponSourceID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="ThroughDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="vCouponDetailsCurrentlyOpen">
+    <Key>
+      <PropertyRef Name="CouponDetailID" />
+      <PropertyRef Name="CouponID" />
+      <PropertyRef Name="DiscountTypeID" />
+    </Key>
+    <Property Name="CouponDetailID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="CouponID" Type="Int32" Nullable="false" />
+    <Property Name="DiscountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="AmountOff" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PercentageDiscount" Type="Int32" />
+    <Property Name="DiscountType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsFree" Type="Boolean" />
+    <Property Name="IsBOGO" Type="Boolean" />
+    <Property Name="IsPercentageDiscount" Type="Boolean" />
+    <Property Name="isAmountOff" Type="Int64" />
+  </EntityType>
+  <EntityType Name="vCouponInfo">
+    <Key>
+      <PropertyRef Name="Coupon" />
+      <PropertyRef Name="CouponSource" />
+      <PropertyRef Name="DiscountType" />
+      <PropertyRef Name="IsFree" />
+      <PropertyRef Name="IsPercentageDiscount" />
+      <PropertyRef Name="IsBOGO" />
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="Coupon" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CouponSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="ThroughDate" Type="DateTime" Precision="0" />
+    <Property Name="ProductDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="AmountOff" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PercentageDiscount" Type="Int32" />
+    <Property Name="DiscountType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsFree" Type="Boolean" Nullable="false" />
+    <Property Name="IsPercentageDiscount" Type="Boolean" Nullable="false" />
+    <Property Name="IsBOGO" Type="Boolean" Nullable="false" />
+    <Property Name="isAmountOff" Type="Int64" />
+    <Property Name="CouponID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vCouponsCurrentlyOpen">
+    <Key>
+      <PropertyRef Name="CouponID" />
+      <PropertyRef Name="Coupon" />
+      <PropertyRef Name="CouponSourceID" />
+    </Key>
+    <Property Name="CouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Coupon" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CouponSourceID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="ThroughDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="vCurrentStoreStatusForAllStore">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="StoreStatus" />
+      <PropertyRef Name="IsOpenForBusiness" />
+      <PropertyRef Name="IsClosedForever" />
+      <PropertyRef Name="StoreStatusID" />
+    </Key>
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="DateOfLastStatusChange" Type="DateTime" Precision="3" />
+    <Property Name="StoreStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsOpenForBusiness" Type="Boolean" Nullable="false" />
+    <Property Name="IsClosedForever" Type="Boolean" Nullable="false" />
+    <Property Name="StoreStatusID" Type="Int32" Nullable="false" />
+    <Property Name="myStore" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vCurrentStoreStatusForAllStores_Step1">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="DateOfLastStatusChange" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="vEmpl">
+    <Key>
+      <PropertyRef Name="EmplID" />
+      <PropertyRef Name="Empl" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="IsSelfScan" />
+    </Key>
+    <Property Name="EmplID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Empl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="StoreID" Type="Int32" />
+    <Property Name="EmplTitleID" Type="Int32" />
+    <Property Name="IsSelfScan" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vEmplCountWhoAreCurrentlyEmployedByStore">
+    <Key>
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="Store" />
+    </Key>
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TotalEmployeesWhoAreEmployed" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vEmplDDL">
+    <Key>
+      <PropertyRef Name="Empl" />
+      <PropertyRef Name="EmplID" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="Store" />
+      <PropertyRef Name="Address1" />
+      <PropertyRef Name="EmplTitle" />
+    </Key>
+    <Property Name="Empl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="EmplID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address1" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="EmplTitle" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Summary" Type="String" MaxLength="213" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vEmplGridViewReadOnly">
+    <Key>
+      <PropertyRef Name="Empl" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="IsSelfScan" />
+      <PropertyRef Name="EmplTitle" />
+      <PropertyRef Name="Store" />
+      <PropertyRef Name="Address1" />
+    </Key>
+    <Property Name="Empl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IsSelfScan" Type="Boolean" Nullable="false" />
+    <Property Name="EmplTitle" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address1" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vEmplMostCurrentStatusDateChange">
+    <Key>
+      <PropertyRef Name="EmplID" />
+    </Key>
+    <Property Name="EmplID" Type="Int32" Nullable="false" />
+    <Property Name="MostCurrentStatusDateChange" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="vEmployeeWhoCanBeAStoreManager">
+    <Key>
+      <PropertyRef Name="EmplID" />
+      <PropertyRef Name="Empl" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+    </Key>
+    <Property Name="EmplID" Type="Int32" Nullable="false" />
+    <Property Name="Empl" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vHourlySalesByCalendarDay">
+    <Key>
+      <PropertyRef Name="DateOfTransaction" />
+    </Key>
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DateOfTransaction" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Hour" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vHourlySalesByCalendarDayGroupedByStore">
+    <Key>
+      <PropertyRef Name="DateOfTransaction" />
+      <PropertyRef Name="StoreID" />
+      <PropertyRef Name="Store" />
+    </Key>
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DateOfTransaction" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Hour" Type="Int32" />
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vLoyaltyIDThatHasBroughtTheMostGrocery">
+    <Key>
+      <PropertyRef Name="LoyaltyID" />
+    </Key>
+    <Property Name="LoyaltyID" Type="Int32" Nullable="false" />
+    <Property Name="SumOfTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice">
+    <Key>
+      <PropertyRef Name="LoyaltyNumber" />
+    </Key>
+    <Property Name="LoyaltyNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="vNumberOfEachTransactionType">
+    <Key>
+      <PropertyRef Name="TransactionType" />
+    </Key>
+    <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Expr1" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vProductDDL">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vProductInfo">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Container" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Brand" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Container" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BrandID" Type="Int32" />
+    <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Calories" Type="Double" />
+  </EntityType>
+  <EntityType Name="vProductSalesByHours_NonPrime">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Brand" />
+    </Key>
+    <Property Name="NameID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vProductSalesByHours_Prime">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Brand" />
+    </Key>
+    <Property Name="NameID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Brand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vPurchasesAtStore">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="Store" />
+      <PropertyRef Name="StoreNumber" />
+      <PropertyRef Name="State" />
+      <PropertyRef Name="TimeOfTransaction" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" Nullable="false" />
+    <Property Name="Store" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="StoreNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="SumOfTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TimeOfTransaction" Type="Time" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="vPurchaseTotal">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="TimeOfTransaction" />
+      <PropertyRef Name="DateOfTransaction" />
+    </Key>
+    <Property Name="TransactionID" Type="Int32" Nullable="false" />
+    <Property Name="TimeOfTransaction" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="DateOfTransaction" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SumOfTotalPrice" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="vStoreStatusTable">
+    <Key>
+      <PropertyRef Name="StoreStatusID" />
+      <PropertyRef Name="StoreStatus" />
+      <PropertyRef Name="IsOpenForBusiness" />
+      <PropertyRef Name="IsClosedForever" />
+    </Key>
+    <Property Name="StoreStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsOpenForBusiness" Type="Boolean" Nullable="false" />
+    <Property Name="IsClosedForever" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vStoreStatusThatIsClosedButNotClosedForever">
+    <Key>
+      <PropertyRef Name="StoreStatusID" />
+      <PropertyRef Name="IsOpenForBusiness" />
+      <PropertyRef Name="IsClosedForever" />
+    </Key>
+    <Property Name="StoreStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsOpenForBusiness" Type="Boolean" Nullable="false" />
+    <Property Name="IsClosedForever" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vTop10ProductsByQtyOfProduct">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="TransactionTypeID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SumOfQtyOfProduct" Type="Int32" />
+    <Property Name="TransactionTypeID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vTop15MostLoyalCustomers">
+    <Key>
+      <PropertyRef Name="LoyaltyID" />
+      <PropertyRef Name="LoyaltyNumber" />
+    </Key>
+    <Property Name="LoyaltyID" Type="Int32" Nullable="false" />
+    <Property Name="LoyaltyNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="CountOfTransactionID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="vTop5CustomersReceivingRefunds">
+    <Key>
+      <PropertyRef Name="LoyaltyNumber" />
+      <PropertyRef Name="TransactionTypeID" />
+    </Key>
+    <Property Name="LoyaltyNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Expr1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TransactionTypeID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vTopSellingProductByTotalAmount">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="Manufacturer" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Expr1" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="vTopSpendingLoyaltyNumber">
+    <Key>
+      <PropertyRef Name="LoyaltyNumber" />
+      <PropertyRef Name="LoyaltyID" />
+    </Key>
+    <Property Name="LoyaltyNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LoyaltyID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vTotalAmountByTransactionType">
+    <Key>
+      <PropertyRef Name="TransactionType" />
+    </Key>
+    <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Expr1" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="vTotalSalesByProduct">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SaleAmount" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <Association Name="FK_tCoupon_tCouponSource">
+    <End Role="tCouponSource" Type="Self.tCouponSource" Multiplicity="1" />
+    <End Role="tCoupon" Type="Self.tCoupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tCouponSource">
+        <PropertyRef Name="CouponSourceID" />
+      </Principal>
+      <Dependent Role="tCoupon">
+        <PropertyRef Name="CouponSourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tCouponDetail_tCoupon">
+    <End Role="tCoupon" Type="Self.tCoupon" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tCouponDetail" Type="Self.tCouponDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tCoupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="tCouponDetail">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tCouponDetail_tDiscountType">
+    <End Role="tDiscountType" Type="Self.tDiscountType" Multiplicity="1" />
+    <End Role="tCouponDetail" Type="Self.tCouponDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tDiscountType">
+        <PropertyRef Name="DiscountTypeID" />
+      </Principal>
+      <Dependent Role="tCouponDetail">
+        <PropertyRef Name="DiscountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tCouponDetail_tProduct">
+    <End Role="tProduct" Type="Self.tProduct" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tCouponDetail" Type="Self.tCouponDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tProduct">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="tCouponDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tEmpl_tEmplTitle">
+    <End Role="tEmplTitle" Type="Self.tEmplTitle" Multiplicity="0..1" />
+    <End Role="tEmpl" Type="Self.tEmpl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tEmplTitle">
+        <PropertyRef Name="EmplTitleID" />
+      </Principal>
+      <Dependent Role="tEmpl">
+        <PropertyRef Name="EmplTitleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tEmpl_tStore">
+    <End Role="tStore" Type="Self.tStore" Multiplicity="0..1" />
+    <End Role="tEmpl" Type="Self.tEmpl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tStore">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="tEmpl">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TransactionID_fk1">
+    <End Role="tTransaction" Type="Self.tTransaction" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tTransactionDetail" Type="Self.tTransactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTransaction">
+        <PropertyRef Name="TransactionID" />
+      </Principal>
+      <Dependent Role="tTransactionDetail">
+        <PropertyRef Name="TransactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SimGroceryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tConfigs" EntityType="Self.tConfig" />
+    <EntitySet Name="tContainers" EntityType="Self.tContainer" />
+    <EntitySet Name="tCoupons" EntityType="Self.tCoupon" />
+    <EntitySet Name="tCouponDetails" EntityType="Self.tCouponDetail" />
+    <EntitySet Name="tCouponSources" EntityType="Self.tCouponSource" />
+    <EntitySet Name="tDiscountTypes" EntityType="Self.tDiscountType" />
+    <EntitySet Name="tEmpls" EntityType="Self.tEmpl" />
+    <EntitySet Name="tEmplHistories" EntityType="Self.tEmplHistory" />
+    <EntitySet Name="tEmplStatus" EntityType="Self.tEmplStatu" />
+    <EntitySet Name="tEmplTitles" EntityType="Self.tEmplTitle" />
+    <EntitySet Name="tLoyalties" EntityType="Self.tLoyalty" />
+    <EntitySet Name="tManufacturers" EntityType="Self.tManufacturer" />
+    <EntitySet Name="tNumbers" EntityType="Self.tNumber" />
+    <EntitySet Name="tProducts" EntityType="Self.tProduct" />
+    <EntitySet Name="tServing_size_UOM" EntityType="Self.tServing_size_UOM" />
+    <EntitySet Name="tStores" EntityType="Self.tStore" />
+    <EntitySet Name="tStoreHistories" EntityType="Self.tStoreHistory" />
+    <EntitySet Name="tStoreStatus" EntityType="Self.tStoreStatu" />
+    <EntitySet Name="tSupplyChains" EntityType="Self.tSupplyChain" />
+    <EntitySet Name="tTransactions" EntityType="Self.tTransaction" />
+    <EntitySet Name="tTransactionDetails" EntityType="Self.tTransactionDetail" />
+    <EntitySet Name="tTransactionTypes" EntityType="Self.tTransactionType" />
+    <EntitySet Name="tUOMs" EntityType="Self.tUOM" />
+    <EntitySet Name="tBrands" EntityType="Self.tBrand" />
+    <EntitySet Name="tNames" EntityType="Self.tName" />
+    <EntitySet Name="vAllTransactionsOfTopSpendingLoyaltyNumbers" EntityType="Self.vAllTransactionsOfTopSpendingLoyaltyNumber" />
+    <EntitySet Name="vAveries" EntityType="Self.vAvery" />
+    <EntitySet Name="vCountOfTransactionsByStoreAndLoyalties" EntityType="Self.vCountOfTransactionsByStoreAndLoyalty" />
+    <EntitySet Name="vCoupons" EntityType="Self.vCoupon" />
+    <EntitySet Name="vCouponDetailsCurrentlyOpens" EntityType="Self.vCouponDetailsCurrentlyOpen" />
+    <EntitySet Name="vCouponInfoes" EntityType="Self.vCouponInfo" />
+    <EntitySet Name="vCouponsCurrentlyOpens" EntityType="Self.vCouponsCurrentlyOpen" />
+    <EntitySet Name="vCurrentStoreStatusForAllStores" EntityType="Self.vCurrentStoreStatusForAllStore" />
+    <EntitySet Name="vCurrentStoreStatusForAllStores_Step1" EntityType="Self.vCurrentStoreStatusForAllStores_Step1" />
+    <EntitySet Name="vEmpls" EntityType="Self.vEmpl" />
+    <EntitySet Name="vEmplCountWhoAreCurrentlyEmployedByStores" EntityType="Self.vEmplCountWhoAreCurrentlyEmployedByStore" />
+    <EntitySet Name="vEmplDDLs" EntityType="Self.vEmplDDL" />
+    <EntitySet Name="vEmplGridViewReadOnlies" EntityType="Self.vEmplGridViewReadOnly" />
+    <EntitySet Name="vEmplMostCurrentStatusDateChanges" EntityType="Self.vEmplMostCurrentStatusDateChange" />
+    <EntitySet Name="vEmployeeWhoCanBeAStoreManagers" EntityType="Self.vEmployeeWhoCanBeAStoreManager" />
+    <EntitySet Name="vHourlySalesByCalendarDays" EntityType="Self.vHourlySalesByCalendarDay" />
+    <EntitySet Name="vHourlySalesByCalendarDayGroupedByStores" EntityType="Self.vHourlySalesByCalendarDayGroupedByStore" />
+    <EntitySet Name="vLoyaltyIDThatHasBroughtTheMostGroceries" EntityType="Self.vLoyaltyIDThatHasBroughtTheMostGrocery" />
+    <EntitySet Name="vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrices" EntityType="Self.vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice" />
+    <EntitySet Name="vNumberOfEachTransactionTypes" EntityType="Self.vNumberOfEachTransactionType" />
+    <EntitySet Name="vProductDDLs" EntityType="Self.vProductDDL" />
+    <EntitySet Name="vProductInfoes" EntityType="Self.vProductInfo" />
+    <EntitySet Name="vProductSalesByHours_NonPrime" EntityType="Self.vProductSalesByHours_NonPrime" />
+    <EntitySet Name="vProductSalesByHours_Prime" EntityType="Self.vProductSalesByHours_Prime" />
+    <EntitySet Name="vPurchasesAtStores" EntityType="Self.vPurchasesAtStore" />
+    <EntitySet Name="vPurchaseTotals" EntityType="Self.vPurchaseTotal" />
+    <EntitySet Name="vStoreStatusTables" EntityType="Self.vStoreStatusTable" />
+    <EntitySet Name="vStoreStatusThatIsClosedButNotClosedForevers" EntityType="Self.vStoreStatusThatIsClosedButNotClosedForever" />
+    <EntitySet Name="vTop10ProductsByQtyOfProduct" EntityType="Self.vTop10ProductsByQtyOfProduct" />
+    <EntitySet Name="vTop15MostLoyalCustomers" EntityType="Self.vTop15MostLoyalCustomers" />
+    <EntitySet Name="vTop5CustomersReceivingRefunds" EntityType="Self.vTop5CustomersReceivingRefunds" />
+    <EntitySet Name="vTopSellingProductByTotalAmounts" EntityType="Self.vTopSellingProductByTotalAmount" />
+    <EntitySet Name="vTopSpendingLoyaltyNumbers" EntityType="Self.vTopSpendingLoyaltyNumber" />
+    <EntitySet Name="vTotalAmountByTransactionTypes" EntityType="Self.vTotalAmountByTransactionType" />
+    <EntitySet Name="vTotalSalesByProducts" EntityType="Self.vTotalSalesByProduct" />
+    <AssociationSet Name="FK_tCoupon_tCouponSource" Association="Self.FK_tCoupon_tCouponSource">
+      <End Role="tCouponSource" EntitySet="tCouponSources" />
+      <End Role="tCoupon" EntitySet="tCoupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tCouponDetail_tCoupon" Association="Self.FK_tCouponDetail_tCoupon">
+      <End Role="tCoupon" EntitySet="tCoupons" />
+      <End Role="tCouponDetail" EntitySet="tCouponDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tCouponDetail_tDiscountType" Association="Self.FK_tCouponDetail_tDiscountType">
+      <End Role="tDiscountType" EntitySet="tDiscountTypes" />
+      <End Role="tCouponDetail" EntitySet="tCouponDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tCouponDetail_tProduct" Association="Self.FK_tCouponDetail_tProduct">
+      <End Role="tProduct" EntitySet="tProducts" />
+      <End Role="tCouponDetail" EntitySet="tCouponDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tEmpl_tEmplTitle" Association="Self.FK_tEmpl_tEmplTitle">
+      <End Role="tEmplTitle" EntitySet="tEmplTitles" />
+      <End Role="tEmpl" EntitySet="tEmpls" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tEmpl_tStore" Association="Self.FK_tEmpl_tStore">
+      <End Role="tStore" EntitySet="tStores" />
+      <End Role="tEmpl" EntitySet="tEmpls" />
+    </AssociationSet>
+    <AssociationSet Name="TransactionID_fk1" Association="Self.TransactionID_fk1">
+      <End Role="tTransaction" EntitySet="tTransactions" />
+      <End Role="tTransactionDetail" EntitySet="tTransactionDetails" />
+    </AssociationSet>
+    <FunctionImport Name="fEmployeesWhoCanBeAStoreManager" IsComposable="true" ReturnType="Collection(SimGroceryModel.fEmployeesWhoCanBeAStoreManager_Result)" />
+    <FunctionImport Name="fGetCouponDetailsCurrentlyOpenByProductID" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCouponDetailsCurrentlyOpenByProductID_Result)">
+      <Parameter Name="productID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fGetCouponInfo" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCouponInfo_Result)">
+      <Parameter Name="couponID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fGetCouponsOpen" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCouponsOpen_Result)">
+      <Parameter Name="couponDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="fGetCurrentEmplStatus" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCurrentEmplStatus_Result)">
+      <Parameter Name="EmplID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fGetCurrentStoreStatus" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCurrentStoreStatus_Result)">
+      <Parameter Name="StoreID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fGetEmplStatus_CanWork" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetEmplStatus_CanWork_Result)" />
+    <FunctionImport Name="fGetStoreInfo" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetStoreInfo_Result)">
+      <Parameter Name="Store" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="fTotalSalesByProduct" IsComposable="true" ReturnType="Collection(SimGroceryModel.fTotalSalesByProduct_Result)">
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="zzzSQLInjection" IsComposable="true" ReturnType="Collection(SimGroceryModel.zzzSQLInjection_Result)">
+      <Parameter Name="Store" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spAddEmpl">
+      <Parameter Name="FirstName" Mode="In" Type="String" />
+      <Parameter Name="LastName" Mode="In" Type="String" />
+      <Parameter Name="Empl" Mode="In" Type="String" />
+      <Parameter Name="StoreID" Mode="In" Type="Int32" />
+      <Parameter Name="EmplTitleID" Mode="In" Type="Int32" />
+      <Parameter Name="EmplStatusID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spAddStore" ReturnType="Collection(SimGroceryModel.spAddStore_Result)">
+      <Parameter Name="StoreNumber" Mode="In" Type="String" />
+      <Parameter Name="Store" Mode="In" Type="String" />
+      <Parameter Name="Address1" Mode="In" Type="String" />
+      <Parameter Name="Address2" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="Zip" Mode="In" Type="String" />
+      <Parameter Name="ManagerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spAddStoreWithStoreStatus" ReturnType="Collection(SimGroceryModel.spAddStoreWithStoreStatus_Result)">
+      <Parameter Name="StoreNumber" Mode="In" Type="String" />
+      <Parameter Name="Store" Mode="In" Type="String" />
+      <Parameter Name="Address1" Mode="In" Type="String" />
+      <Parameter Name="Address2" Mode="In" Type="String" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="State" Mode="In" Type="String" />
+      <Parameter Name="Zip" Mode="In" Type="String" />
+      <Parameter Name="ManagerID" Mode="In" Type="Int32" />
+      <Parameter Name="StoreStatusID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spAddTransactionAndDetail">
+      <Parameter Name="LoyaltyID" Mode="In" Type="Int32" />
+      <Parameter Name="DateOfTransaction" Mode="In" Type="String" />
+      <Parameter Name="TimeOfTransaction" Mode="In" Type="String" />
+      <Parameter Name="TransactionTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="StoreID" Mode="In" Type="Int32" />
+      <Parameter Name="EmplID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+      <Parameter Name="Qty" Mode="In" Type="Int32" />
+      <Parameter Name="PricePerSellableUnit" Mode="In" Type="String" />
+      <Parameter Name="TotalPrice" Mode="In" Type="String" />
+      <Parameter Name="TransactionComment" Mode="In" Type="String" />
+      <Parameter Name="TransactionDetailComment" Mode="In" Type="String" />
+      <Parameter Name="couponDetailID" Mode="In" Type="Int32" />
+      <Parameter Name="TransactionID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spAddTransactionDetail">
+      <Parameter Name="TransactionID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductID" Mode="In" Type="Int32" />
+      <Parameter Name="Qty" Mode="In" Type="Int32" />
+      <Parameter Name="PricePerSellableUnit" Mode="In" Type="String" />
+      <Parameter Name="TotalPrice" Mode="In" Type="String" />
+      <Parameter Name="TransactionDetailComment" Mode="In" Type="String" />
+      <Parameter Name="couponDetailID" Mode="In" Type="Int32" />
+      <Parameter Name="TransactionDetailID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spInitEmplHistory" />
+    <FunctionImport Name="spInitStoreHistory" />
+    <FunctionImport Name="spUpdateEmplStatus">
+      <Parameter Name="EmplID" Mode="In" Type="Int32" />
+      <Parameter Name="EmplStatusID" Mode="In" Type="Int32" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdateStoreStatus">
+      <Parameter Name="StoreID" Mode="In" Type="Int32" />
+      <Parameter Name="StoreStatusID" Mode="In" Type="Int32" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="spAddStore_Result">
+    <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+    <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+    <Property Type="Int32" Name="ErrorState" Nullable="true" />
+    <Property Type="String" Name="ErrorProcedure" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="ErrorLine" Nullable="true" />
+    <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+  </ComplexType>
+  <ComplexType Name="spAddStoreWithStoreStatus_Result">
+    <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+    <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+    <Property Type="Int32" Name="ErrorState" Nullable="true" />
+    <Property Type="String" Name="ErrorProcedure" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="ErrorLine" Nullable="true" />
+    <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+
+    ViewBag.Brands = MvcApplication.GetBrands();
+}
+
+<div>
+    @foreach (aspdotnet_final.Models.tBrand brand in ViewBag.Brands)
+    {
+        @Html.Label(brand.Brand)
+        <br />
+    }
+</div>
