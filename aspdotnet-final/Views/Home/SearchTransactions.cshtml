@@ -1,0 +1,78 @@
+﻿<!--
+    http://www.dotnetfunda.com/articles/show/2912/loading-search-result-without-page-refresh-in-aspnet-mvc-ajax
+-->
+
+@{
+    ViewBag.Title = "Search Transactions";
+    AjaxOptions options = new AjaxOptions
+    {
+        UpdateTargetId = "searchResult",
+        //Confirm = "Are you sure to start search?",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "divLoading"
+    };
+}
+
+@using (Ajax.BeginForm("SearchTransactionsPartial", options))
+{
+    <div id="divLoading" style="color:red;width:200px;background-color:yellow;font-size:larger;display:none;position:absolute;">Loading ....</div>
+    <div class="page-title">
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" id="keyword" class="form-control" placeholder="Search for Loyalty # or Product...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="table-responsive">
+            <table class="table table-striped jambo_table bulk_action">
+                <thead>
+                    <tr class="headings">
+                        <th class="column-title">Invoice Date </th>
+                        <th class="column-title">Comment </th>
+                        <th class="column-title">Loyalty # </th>
+                        <th class="column-title">Status </th>
+                        <th class="column-title">Amount </th>
+                        <th class="column-title no-link last">
+                            <span class="nobr">Action</span>
+                        </th>
+                        <th class="bulk-actions" colspan="7">
+                            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="searchResult">
+                    @Html.Action("SearchTransactionsPartial", new { keyword = "" })
+                </tbody>
+                    <!--<tr class="even pointer">
+                        <td class=" ">Invoice Date</td>
+                        <td class=" ">Comment</td>
+                        <td class=" ">Loyalty #</td>
+                        <td class=" ">Paid</td>
+                        <td class="a-right a-right ">$7.45</td>
+                        <td class=" last">
+                            <a href="#">View</a>
+                        </td>
+                    </tr>
+                    <tr class="odd pointer">
+                        <td class=" ">Invoice Date</td>
+                        <td class=" ">Comment</td>
+                        <td class=" ">Loyalty #</td>
+                        <td class=" ">Paid</td>
+                        <td class="a-right a-right ">$7.45</td>
+                        <td class=" last">
+                            <a href="#">View</a>
+                        </td>
+                    </tr>-->
+            </table>
+        </div>
+    </div>
+</div>

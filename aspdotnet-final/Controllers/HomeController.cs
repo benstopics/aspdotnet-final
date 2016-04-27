@@ -1,4 +1,5 @@
-﻿using System;
+﻿using aspdotnet_final.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,8 +11,31 @@ namespace aspdotnet_final.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Testing testing";
+            return View();
+        }
 
+        public ActionResult SearchEmployees()
+        {
+            return View();
+        }
+
+        public ActionResult SearchProducts()
+        {
+            return View();
+        }
+
+        public ActionResult SearchTransactions()
+        {
+            return View();
+        }
+
+        public ActionResult BrandMarketShare()
+        {
+            return View();
+        }
+
+        public ActionResult FinancialStatisticsOverview()
+        {
             return View();
         }
     }

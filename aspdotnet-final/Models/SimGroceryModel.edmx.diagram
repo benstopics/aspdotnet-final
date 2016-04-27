@@ -69,9 +69,9 @@
         <AssociationConnector Association="SimGroceryModel.FK_tCouponDetail_tCoupon" ManuallyRouted="false" />
         <AssociationConnector Association="SimGroceryModel.FK_tCouponDetail_tDiscountType" ManuallyRouted="false" />
         <AssociationConnector Association="SimGroceryModel.FK_tCouponDetail_tProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="SimGroceryModel.FK_tEmpl_tEmplTitle" ManuallyRouted="false" />
         <AssociationConnector Association="SimGroceryModel.FK_tEmpl_tStore" ManuallyRouted="false" />
         <AssociationConnector Association="SimGroceryModel.TransactionID_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="SimGroceryModel.FK_tEmpl_tEmplTitle" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

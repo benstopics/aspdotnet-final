@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SimGroceryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SimGroceryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SimGrocery.dbo.tBrand' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tBrand">
           <Key>
-            <PropertyRef Name="Brand" />
             <PropertyRef Name="BrandID" />
+            <PropertyRef Name="Brand" />
           </Key>
           <Property Name="BrandID" Type="int" Nullable="false" />
           <Property Name="Brand" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -597,11 +597,6 @@ warning 6002: The table/view 'SimGrocery.dbo.vHourlySalesByCalendarDayGroupedByS
           <Property Name="Store" Type="nchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SimGrocery.dbo.vLastTransactionInfo' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vLastTransactionInfo">
-          <Property Name="Expr2" Type="nvarchar" MaxLength="248" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SimGrocery.dbo.vLoyaltyIDThatHasBroughtTheMostGroceries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vLoyaltyIDThatHasBroughtTheMostGroceries">
           <Key>
@@ -610,11 +605,6 @@ warning 6002: The table/view 'SimGrocery.dbo.vLoyaltyIDThatHasBroughtTheMostGroc
           <Property Name="LoyaltyID" Type="int" Nullable="false" />
           <Property Name="SumOfTotalPrice" Type="money" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SimGrocery.dbo.vMaxTransactionID' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vMaxTransactionID">
-          <Property Name="maxTransactionID" Type="int" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SimGrocery.dbo.vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vMostExpensiveTransactionsByLoyaltyNumberAndTotalPrice">
@@ -662,12 +652,6 @@ warning 6002: The table/view 'SimGrocery.dbo.vProductInfo' does not have a prima
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
           <Property Name="Calories" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SimGrocery.dbo.vProductRpt' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vProductRpt">
-          <Property Name="Description" Type="nvarchar" MaxLength="255" />
-          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SimGrocery.dbo.vProductSalesByHours_NonPrime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vProductSalesByHours_NonPrime">
@@ -726,12 +710,6 @@ warning 6002: The table/view 'SimGrocery.dbo.vPurchaseTotals' does not have a pr
           <Property Name="DateOfTransaction" Type="date" Nullable="false" />
           <Property Name="SumOfTotalPrice" Type="money" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SimGrocery.dbo.vSam' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vSam">
-          <Property Name="Products Sold" Type="int" />
-          <Property Name="Store Name" Type="nvarchar" MaxLength="200" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'SimGrocery.dbo.vStoreStatusTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vStoreStatusTable">
@@ -796,12 +774,6 @@ warning 6002: The table/view 'SimGrocery.dbo.vTop5CustomersReceivingRefunds' doe
           <Property Name="TransactionTypeID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SimGrocery.dbo.vTopProductsByTotalSales' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vTopProductsByTotalSales">
-          <Property Name="SumOfTotalPrice" Type="money" />
-          <Property Name="Product" Type="nvarchar(max)" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SimGrocery.dbo.vTopSellingProductByTotalAmount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vTopSellingProductByTotalAmount">
           <Key>
@@ -827,12 +799,6 @@ warning 6002: The table/view 'SimGrocery.dbo.vTopSpendingLoyaltyNumber' does not
           <Property Name="LoyaltyID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'SimGrocery.dbo.vTopToProductsByTotalSales' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vTopToProductsByTotalSales">
-          <Property Name="SumOfTotalPrice" Type="money" />
-          <Property Name="Product" Type="nvarchar(max)" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'SimGrocery.dbo.vTotalAmountByTransactionType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vTotalAmountByTransactionType">
           <Key>
@@ -852,11 +818,6 @@ warning 6002: The table/view 'SimGrocery.dbo.vTotalSalesByProduct' does not have
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="SaleAmount" Type="money" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vTotalTransactions">
-          <Property Name="TotalTransactions" Type="int" />
-        </EntityType>-->
         <Association Name="FK_tCoupon_tCouponSource">
           <End Role="tCouponSource" Type="Self.tCouponSource" Multiplicity="1" />
           <End Role="tCoupon" Type="Self.tCoupon" Multiplicity="*" />
@@ -1522,8 +1483,7 @@ warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a
             <End Role="tTransactionDetail" EntitySet="tTransactionDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SimGroceryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1667,8 +1627,8 @@ warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a
           <Property Name="StoreID" Type="Int32" />
           <Property Name="EmplTitleID" Type="Int32" />
           <Property Name="IsSelfScan" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="tEmplTitle" Relationship="Self.FK_tEmpl_tEmplTitle" FromRole="tEmpl" ToRole="tEmplTitle" />
           <NavigationProperty Name="tStore" Relationship="Self.FK_tEmpl_tStore" FromRole="tEmpl" ToRole="tStore" />
+          <NavigationProperty Name="tEmplTitle" Relationship="SimGroceryModel.FK_tEmpl_tEmplTitle" FromRole="tEmpl" ToRole="tEmplTitle" />
         </EntityType>
         <EntityType Name="tEmplHistory">
           <Key>
@@ -1698,7 +1658,7 @@ warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a
           <Property Name="EmplTitle" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="IsStoreManager" Type="Boolean" Nullable="false" />
           <Property Name="IsSelfScan" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="tEmpls" Relationship="Self.FK_tEmpl_tEmplTitle" FromRole="tEmplTitle" ToRole="tEmpl" />
+          <NavigationProperty Name="tEmpls" Relationship="SimGroceryModel.FK_tEmpl_tEmplTitle" FromRole="tEmplTitle" ToRole="tEmpl" />
         </EntityType>
         <EntityType Name="tLoyalty">
           <Key>
@@ -2400,18 +2360,6 @@ warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tEmpl_tEmplTitle">
-          <End Role="tEmplTitle" Type="Self.tEmplTitle" Multiplicity="0..1" />
-          <End Role="tEmpl" Type="Self.tEmpl" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tEmplTitle">
-              <PropertyRef Name="EmplTitleID" />
-            </Principal>
-            <Dependent Role="tEmpl">
-              <PropertyRef Name="EmplTitleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tEmpl_tStore">
           <End Role="tStore" Type="Self.tStore" Multiplicity="0..1" />
           <End Role="tEmpl" Type="Self.tEmpl" Multiplicity="*" />
@@ -2515,10 +2463,6 @@ warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a
             <End Role="tProduct" EntitySet="tProducts" />
             <End Role="tCouponDetail" EntitySet="tCouponDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_tEmpl_tEmplTitle" Association="Self.FK_tEmpl_tEmplTitle">
-            <End Role="tEmplTitle" EntitySet="tEmplTitles" />
-            <End Role="tEmpl" EntitySet="tEmpls" />
-          </AssociationSet>
           <AssociationSet Name="FK_tEmpl_tStore" Association="Self.FK_tEmpl_tStore">
             <End Role="tStore" EntitySet="tStores" />
             <End Role="tEmpl" EntitySet="tEmpls" />
@@ -2529,29 +2473,29 @@ warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a
           </AssociationSet>
           <FunctionImport Name="fEmployeesWhoCanBeAStoreManager" IsComposable="true" ReturnType="Collection(SimGroceryModel.fEmployeesWhoCanBeAStoreManager_Result)" />
           <FunctionImport Name="fGetCouponDetailsCurrentlyOpenByProductID" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCouponDetailsCurrentlyOpenByProductID_Result)">
-            <Parameter Name="productID" Mode="In" Type="Int32" />
+          <Parameter Name="productID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fGetCouponInfo" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCouponInfo_Result)">
-            <Parameter Name="couponID" Mode="In" Type="Int32" />
+          <Parameter Name="couponID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fGetCouponsOpen" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCouponsOpen_Result)">
-            <Parameter Name="couponDate" Mode="In" Type="DateTime" />
+          <Parameter Name="couponDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="fGetCurrentEmplStatus" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCurrentEmplStatus_Result)">
-            <Parameter Name="EmplID" Mode="In" Type="Int32" />
+          <Parameter Name="EmplID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fGetCurrentStoreStatus" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetCurrentStoreStatus_Result)">
-            <Parameter Name="StoreID" Mode="In" Type="Int32" />
+          <Parameter Name="StoreID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fGetEmplStatus_CanWork" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetEmplStatus_CanWork_Result)" />
           <FunctionImport Name="fGetStoreInfo" IsComposable="true" ReturnType="Collection(SimGroceryModel.fGetStoreInfo_Result)">
-            <Parameter Name="Store" Mode="In" Type="String" />
+          <Parameter Name="Store" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="fTotalSalesByProduct" IsComposable="true" ReturnType="Collection(SimGroceryModel.fTotalSalesByProduct_Result)">
-            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+          <Parameter Name="ProductID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="zzzSQLInjection" IsComposable="true" ReturnType="Collection(SimGroceryModel.zzzSQLInjection_Result)">
-            <Parameter Name="Store" Mode="In" Type="String" />
+          <Parameter Name="Store" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="spAddEmpl">
             <Parameter Name="FirstName" Mode="In" Type="String" />
@@ -2620,6 +2564,10 @@ warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a
             <Parameter Name="StoreStatusID" Mode="In" Type="Int32" />
             <Parameter Name="StartDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <AssociationSet Name="FK_tEmpl_tEmplTitle" Association="SimGroceryModel.FK_tEmpl_tEmplTitle">
+            <End Role="tEmplTitle" EntitySet="tEmplTitles" />
+            <End Role="tEmpl" EntitySet="tEmpls" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="spAddStore_Result">
           <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -2637,6 +2585,18 @@ warning 6013: The table/view 'SimGrocery.dbo.vTotalTransactions' does not have a
           <Property Type="Int32" Name="ErrorLine" Nullable="true" />
           <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
         </ComplexType>
+        <Association Name="FK_tEmpl_tEmplTitle">
+          <End Type="SimGroceryModel.tEmplTitle" Role="tEmplTitle" Multiplicity="0..1" />
+          <End Type="SimGroceryModel.tEmpl" Role="tEmpl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tEmplTitle">
+              <PropertyRef Name="EmplTitleID" />
+            </Principal>
+            <Dependent Role="tEmpl">
+              <PropertyRef Name="EmplTitleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

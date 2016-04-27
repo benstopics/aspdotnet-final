@@ -140,8 +140,8 @@
     <Property Name="StoreID" Type="Int32" />
     <Property Name="EmplTitleID" Type="Int32" />
     <Property Name="IsSelfScan" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="tEmplTitle" Relationship="Self.FK_tEmpl_tEmplTitle" FromRole="tEmpl" ToRole="tEmplTitle" />
     <NavigationProperty Name="tStore" Relationship="Self.FK_tEmpl_tStore" FromRole="tEmpl" ToRole="tStore" />
+    <NavigationProperty Name="tEmplTitle" Relationship="SimGroceryModel.FK_tEmpl_tEmplTitle" FromRole="tEmpl" ToRole="tEmplTitle" />
   </EntityType>
   <EntityType Name="tEmplHistory">
     <Key>
@@ -171,7 +171,7 @@
     <Property Name="EmplTitle" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="IsStoreManager" Type="Boolean" Nullable="false" />
     <Property Name="IsSelfScan" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="tEmpls" Relationship="Self.FK_tEmpl_tEmplTitle" FromRole="tEmplTitle" ToRole="tEmpl" />
+    <NavigationProperty Name="tEmpls" Relationship="SimGroceryModel.FK_tEmpl_tEmplTitle" FromRole="tEmplTitle" ToRole="tEmpl" />
   </EntityType>
   <EntityType Name="tLoyalty">
     <Key>
@@ -873,18 +873,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tEmpl_tEmplTitle">
-    <End Role="tEmplTitle" Type="Self.tEmplTitle" Multiplicity="0..1" />
-    <End Role="tEmpl" Type="Self.tEmpl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tEmplTitle">
-        <PropertyRef Name="EmplTitleID" />
-      </Principal>
-      <Dependent Role="tEmpl">
-        <PropertyRef Name="EmplTitleID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tEmpl_tStore">
     <End Role="tStore" Type="Self.tStore" Multiplicity="0..1" />
     <End Role="tEmpl" Type="Self.tEmpl" Multiplicity="*" />
@@ -988,10 +976,6 @@
       <End Role="tProduct" EntitySet="tProducts" />
       <End Role="tCouponDetail" EntitySet="tCouponDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK_tEmpl_tEmplTitle" Association="Self.FK_tEmpl_tEmplTitle">
-      <End Role="tEmplTitle" EntitySet="tEmplTitles" />
-      <End Role="tEmpl" EntitySet="tEmpls" />
-    </AssociationSet>
     <AssociationSet Name="FK_tEmpl_tStore" Association="Self.FK_tEmpl_tStore">
       <End Role="tStore" EntitySet="tStores" />
       <End Role="tEmpl" EntitySet="tEmpls" />
@@ -1093,6 +1077,10 @@
       <Parameter Name="StoreStatusID" Mode="In" Type="Int32" />
       <Parameter Name="StartDate" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <AssociationSet Name="FK_tEmpl_tEmplTitle" Association="SimGroceryModel.FK_tEmpl_tEmplTitle">
+      <End Role="tEmplTitle" EntitySet="tEmplTitles" />
+      <End Role="tEmpl" EntitySet="tEmpls" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="spAddStore_Result">
     <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
@@ -1110,4 +1098,16 @@
     <Property Type="Int32" Name="ErrorLine" Nullable="true" />
     <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
   </ComplexType>
+  <Association Name="FK_tEmpl_tEmplTitle">
+    <End Type="SimGroceryModel.tEmplTitle" Role="tEmplTitle" Multiplicity="0..1" />
+    <End Type="SimGroceryModel.tEmpl" Role="tEmpl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tEmplTitle">
+        <PropertyRef Name="EmplTitleID" />
+      </Principal>
+      <Dependent Role="tEmpl">
+        <PropertyRef Name="EmplTitleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

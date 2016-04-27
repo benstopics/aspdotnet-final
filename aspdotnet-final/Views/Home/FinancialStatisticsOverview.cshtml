@@ -1,0 +1,285 @@
+﻿@{
+    ViewBag.Title = "Financial Statistics Overview";
+
+    // Revenue
+    decimal thisWeeksRevenue = MvcApplication.GetTotalRevenueThisWeek();
+    ViewBag.ThisWeeksRevenue = string.Format("{0:#,##0.00}", thisWeeksRevenue);
+    ViewBag.ChangeInRevenue = (int)((thisWeeksRevenue / (MvcApplication.GetTotalRevenueLastWeek()) - 1) * 100);
+    ViewBag.ChangeInRevenueColor = ViewBag.ChangeInRevenue < 0 ? "red" : "green";
+    ViewBag.ChangeInRevenueArrow = ViewBag.ChangeInRevenue < 0 ? "desc" : "asc";
+    // Transactions
+    decimal thisWeeksTransactions = MvcApplication.GetTotalTransactionsThisWeek(); // Imply cast to decimal to allow floating points for percentages
+    ViewBag.ThisWeeksTransactions = thisWeeksTransactions;
+    ViewBag.ChangeInTransactions = (int)((thisWeeksTransactions / (MvcApplication.GetTotalTransactionsLastWeek()) - 1) * 100);
+    ViewBag.ChangeInTransactionsColor = ViewBag.ChangeInTransactions < 0 ? "red" : "green";
+    ViewBag.ChangeInTransactionsArrow = ViewBag.ChangeInTransactions < 0 ? "desc" : "asc";
+    // Transaction Details
+    decimal thisWeeksTransactionDetails = MvcApplication.GetTotalTransactionDetailsThisWeek(); // Imply cast to decimal to allow floating points for percentages
+    ViewBag.ThisWeeksTransactionDetails = thisWeeksTransactionDetails;
+    ViewBag.ChangeInTransactionDetails = (int)((thisWeeksTransactionDetails / (MvcApplication.GetTotalTransactionDetailsLastWeek()) - 1) * 100);
+    ViewBag.ChangeInTransactionDetailsColor = ViewBag.ChangeInTransactionDetails < 0 ? "red" : "green";
+    ViewBag.ChangeInTransactionDetailsArrow = ViewBag.ChangeInTransactionDetails < 0 ? "desc" : "asc";
+    // Top 10 Products
+    ViewBag.TopProducts = MvcApplication.GetTop10Products();
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    <br />
+    <div class="">
+        <div class="row top_tiles">
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <div class="icon">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <div class="count">$ <span id="ThisWeeksrevenue">@ViewBag.ThisWeeksRevenue</span></div>
+                    <h3>This Week's Revenue</h3>
+                    <p>Total revenue this week</p>
+                    <span class="count_bottom"><i class="@ViewBag.ChangeInRevenueColor"><i class="fa fa-sort-@ViewBag.ChangeInRevenueArrow"></i>@ViewBag.ChangeInRevenue% </i> From last Week</span>
+                </div>
+            </div>
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <div class="icon">
+                        <i class="fa fa-check-square-o"></i>
+                    </div>
+                    <div class="count"><span id="ThisWeekstransactions">@ViewBag.ThisWeeksTransactions</span></div>
+                    <h3>This Week's Transactions</h3>
+                    <p>Total transactions made this week</p>
+                    <span class="count_bottom"><i class="@ViewBag.ChangeInTransactionsColor"><i class="fa fa-sort-@ViewBag.ChangeInTransactionsArrow"></i>@ViewBag.ChangeInTransactions% </i> From last Week</span>
+                </div>
+            </div>
+            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                    <div class="icon">
+                        <i class="fa fa-check-square-o"></i>
+                    </div>
+                    <div class="count"><span id="ThisWeeksdetails">@ViewBag.ThisWeeksTransactionDetails</span></div>
+                    <h3>This Week's Details</h3>
+                    <p>Total products bought last week</p>
+                    <span class="count_bottom"><i class="@ViewBag.ChangeInTransactionDetailsColor"><i class="fa fa-sort-@ViewBag.ChangeInTransactionDetailsArrow"></i>@ViewBag.ChangeInTransactionDetails% </i> From last Week</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <table class="" style="width:100%">
+                            <tr>
+                                <th style="width:37%;">
+                                    <p>Top 5</p>
+                                </th>
+                                <th>
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                        <p class="">Product</p>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                        <p class="">Quantity Sold</p>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                                </td>
+                                <td>
+                                    <table class="tile_info">
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square blue"></i>@ViewBag.TopProducts[0][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[0][1]</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square green"></i>@ViewBag.TopProducts[1][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[1][1]</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square purple"></i>@ViewBag.TopProducts[2][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[2][1]</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square aero"></i>@ViewBag.TopProducts[3][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[3][1]</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square red"></i>@ViewBag.TopProducts[4][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[4][1]</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square blue"></i>@ViewBag.TopProducts[5][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[5][1]</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square green"></i>@ViewBag.TopProducts[6][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[6][1]</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square purple"></i>@ViewBag.TopProducts[7][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[7][1]</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square aero"></i>@ViewBag.TopProducts[8][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[8][1]</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p><i class="fa fa-square red"></i>@ViewBag.TopProducts[9][0]</p>
+                                            </td>
+                                            <td>@ViewBag.TopProducts[9][1]</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            var timer = setInterval(refreshPage, 3000);
+
+            function refreshPage() {
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Content("~/DashboardService.asmx/GetTotalRevenueThisWeek")",
+                    //data: "firstName=Aidy&lastName=F", // the data in form-encoded format, ie as it would appear on a querystring
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text", // the data type we want back, so text.  The data will come wrapped in xml
+                    async: true,
+                    success: function (data) {
+                        //alert(data);
+                        $("#thisweeksrevenue").html(JSON.parse(data).d.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")); // show the string that was returned, this will be the data inside the xml wrapper
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        //alert("Status: " + textStatus + "\nError: " + errorThrown + "\ntext=" + data);
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Content("~/DashboardService.asmx/GetTotalTransactionsThisWeek")",
+                    //data: "firstName=Aidy&lastName=F", // the data in form-encoded format, ie as it would appear on a querystring
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text", // the data type we want back, so text.  The data will come wrapped in xml
+                    async: true,
+                    success: function (data) {
+                        //alert(data);
+                        $("#thisweekstransactions").html(JSON.parse(data).d); // show the string that was returned, this will be the data inside the xml wrapper
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        //alert("Status: " + textStatus + "\nError: " + errorThrown + "\ntext=" + data);
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Content("~/DashboardService.asmx/GetTotalTransactionDetailsThisWeek")",
+                    //data: "firstName=Aidy&lastName=F", // the data in form-encoded format, ie as it would appear on a querystring
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text", // the data type we want back, so text.  The data will come wrapped in xml
+                    async: true,
+                    success: function (data) {
+                        //alert(data);
+                        $("#thisweeksdetails").html(JSON.parse(data).d); // show the string that was returned, this will be the data inside the xml wrapper
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        //alert("Status: " + textStatus + "\nError: " + errorThrown + "\ntext=" + data);
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Doughnut Chart -->
+    <script>
+        $(document).ready(function () {
+            var options = {
+                legend: false,
+                responsive: false
+            };
+
+            new Chart(document.getElementById("canvas1"), {
+                type: 'doughnut',
+                tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+                data: {
+                    labels: [
+                      "@ViewBag.TopProducts[0][0] %",
+                      "@ViewBag.TopProducts[1][0] %",
+                      "@ViewBag.TopProducts[2][0] %",
+                      "@ViewBag.TopProducts[3][0] %",
+                      "@ViewBag.TopProducts[4][0] %",
+                      "@ViewBag.TopProducts[5][0] %",
+                      "@ViewBag.TopProducts[6][0] %",
+                      "@ViewBag.TopProducts[7][0] %",
+                      "@ViewBag.TopProducts[8][0] %",
+                      "@ViewBag.TopProducts[9][0] %"
+                    ],
+                    datasets: [{
+                        data: [
+                            @ViewBag.TopProducts[0][2],
+                            @ViewBag.TopProducts[1][2],
+                            @ViewBag.TopProducts[2][2],
+                            @ViewBag.TopProducts[3][2],
+                            @ViewBag.TopProducts[4][2],
+                            @ViewBag.TopProducts[5][2],
+                            @ViewBag.TopProducts[6][2],
+                            @ViewBag.TopProducts[7][2],
+                            @ViewBag.TopProducts[8][2],
+                            @ViewBag.TopProducts[9][2]],
+                        backgroundColor: [
+                          "#BDC3C7",
+                          "#9B59B6",
+                          "#E74C3C",
+                          "#26B99A",
+                          "#3498DB",
+                          "#BDC3C7",
+                          "#9B59B6",
+                          "#E74C3C",
+                          "#26B99A",
+                          "#3498DB"
+                        ],
+                        hoverBackgroundColor: [
+                          "#CFD4D8",
+                          "#B370CF",
+                          "#E95E4F",
+                          "#36CAAB",
+                          "#49A9EA",
+                          "#CFD4D8",
+                          "#B370CF",
+                          "#E95E4F",
+                          "#36CAAB",
+                          "#49A9EA"
+                        ]
+                    }]
+                },
+                options: options
+            });
+        });
+    </script>
+    <!-- /Doughnut Chart -->
+}

@@ -1,0 +1,32 @@
+== FINANCIAL STATISTICS > OVERVIEW
+
+[X] New Signups Checkbox Dashboard 2 to show total transactions made today
+	[X] Combine with Dashboard 1 % up/down from last week
+
+[X] New Signups Down Arrow Dashboard 2 to show total products sold today
+	[X] Combine with Dashboard 1 % up/down from last week
+
+[X] Use Total Revenue graph on Dashboard 2 to show pulse of past so many transactions by # of details with total revenue
+	[X] Combine with Dashboard 1 % up/down from last week
+
+[X] Pie Chart on Dashboard 3 of top ten products by revenue
+
+== BRANDS REPORT > MARKET SHARE
+
+[X] App Versions Dashboard 1 for all brands total details
+
+== SEARCH > EMPLOYEES
+
+Additional Pages Profile - Employee profiles which show employee work history
+	Search bar above Tables Tables Table design
+
+== SEARCH > Products
+
+Additional Pages E-Commerce - Product profile
+	Search bar above Tables Tables Table design
+
+== SEARCH > Transactions
+
+UI Elements Invoice - Transaction Profile with itemized receipt
+	Search bar above Tables Tables Table design
+
