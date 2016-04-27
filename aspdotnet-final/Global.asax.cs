@@ -207,5 +207,59 @@ namespace aspdotnet_final
                 return result;
             }
         }
+
+        public static string SearchTransactions(string keyword)
+        {
+            using (SimGroceryEntities context =
+                new SimGroceryEntities())
+            {
+                List<string> keywords = new List<string>();
+                foreach (string word in keyword.Split(' '))
+                    keywords.Add(word);
+                var items = (from transaction in context.tTransactions
+                             join detail in context.tTransactionDetails on transaction.TransactionID equals detail.TransactionID
+                             join loyalty in context.tLoyalties on transaction.LoyaltyID equals loyalty.LoyaltyID
+                             join product in context.tProducts on detail.ProductID equals product.ProductID
+                             join productname in context.tNames on product.NameID equals productname.NameID
+                             group new { transaction, detail, loyalty, productname } by transaction into g
+                             select new
+                             {
+                                 transaction = g.FirstOrDefault().transaction,
+                                 loyalty = g.FirstOrDefault().loyalty,
+                                 productname = g.FirstOrDefault().productname,
+                                 Amount = g.Sum(_ => _.detail.TotalPrice)
+                             })
+                            .Where(
+                                _ => keywords.Contains(_.loyalty.LoyaltyNumber)
+                                || keywords.Contains(_.productname.Name)
+                                || keywords.Contains(((DateTime)_.transaction.DateOfTransaction).Day
+                                + "/" + ((DateTime)_.transaction.DateOfTransaction).Month
+                                + "/" + ((DateTime)_.transaction.DateOfTransaction).Year)
+                                || keywords.Contains(((DateTime)_.transaction.DateOfTransaction).Day
+                                + "-" + ((DateTime)_.transaction.DateOfTransaction).Month
+                                + "-" + ((DateTime)_.transaction.DateOfTransaction).Year)
+                            ).Take(50);
+                string result = "";
+
+                bool pointer = true;
+                foreach (var item in items)
+                {
+                    result += "<tr class=\"" + (pointer ? "even" : "odd") + " pointer\">"
+                    + "<td class=\" \">" + ((DateTime)item.transaction.DateOfTransaction).ToString("ddd, dd MMM yyyy HH':'mm':'ss 'GMT'") + "</td>"
+                    + "<td class=\" \">" + item.transaction.Comment + "</td>"
+                    + "<td class=\" \">" + item.loyalty.LoyaltyNumber + "</td>"
+                    + "<td class=\" \">Paid</td>"
+                    + "<td class=\"a-right a-right \">$ " + item.Amount + "</td>"
+                    + "<td class=\" last\">"
+                        + "<a href=\"#\">View</a>"
+                    + "</td>"
+                    + "</tr>";
+
+                    pointer = !pointer;
+                }
+
+                return result;
+            }
+        }
     }
 }

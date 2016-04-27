@@ -65,5 +65,11 @@ namespace aspdotnet_final
         {
             return MvcApplication.GetBrandsMarketShare();
         }
+
+        [WebMethod]
+        public string SearchTransactions(string keyword)
+        {
+            return MvcApplication.SearchTransactions(keyword);
+        }
     }
 }
