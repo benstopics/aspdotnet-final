@@ -2,12 +2,25 @@
     ViewBag.Title = "Dashboard";
 
     ViewBag.Brands = MvcApplication.GetBrands();
-}
-
-<div>
+    
+    /*
     @foreach (aspdotnet_final.Models.tBrand brand in ViewBag.Brands)
     {
         @Html.Label(brand.Brand)
         <br />
     }
-</div>
+    */
+}
+
+<h2>Welcome to the Executive Dashboard!</h2>
+
+<p>This application was developed by Benjamin Ward (wardb3@mail.uc.edu) for the 2016 ASP.NET Final at UC Clermont College.</p>
+<p>This application includes two pages:</p>
+<ul>
+    <dl>
+        <dt>Brands Market Share Report</dt>
+        <dd>Provides a visual representation of how much of the market is dominated by each brand.</dd>
+        <dt>Financial Statistics Overview</dt>
+        <dd>Contains statistics about the products and sales of the company.</dd>
+    </dl>
+</ul>
